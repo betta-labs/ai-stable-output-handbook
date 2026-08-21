@@ -22,9 +22,9 @@ editLink: false
     <h1>让企业 AI 的结果<br>成为可运行的方法。</h1>
     <p class="archive-home__lede">这不是一份工具推荐，也不承诺放之四海皆准的答案。它是一套面向业务、交付、治理与培训的开放方法资产：从最小闭环、上下文与工具控制，到 Agent、评测、韧性与人机协同，把一次好结果变成团队可接管的工作方法。</p>
     <div class="archive-home__actions">
-      <a href="./start">先定位你的问题</a>
-      <a href="./download">下载 PDF</a>
-      <a href="https://github.com/betta-labs/ai-stable-output-handbook">查看 GitHub 真源</a>
+      <a href="./start" data-analytics="handbook_cta_click">先定位你的问题</a>
+      <a href="./download" data-analytics="handbook_pdf_click">下载 PDF</a>
+      <a href="https://github.com/betta-labs/ai-stable-output-handbook" data-analytics="handbook_source_click">查看 GitHub 真源</a>
     </div>
   </div>
 </div>

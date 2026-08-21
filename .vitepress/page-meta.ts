@@ -58,7 +58,16 @@ export const pageMeta: Record<string, PageMeta> = {
   '16-第16章-完整案例集.md': { title: '第 16 章：公开案例、教学情景与完整案例集', description: '阅读带来源与外推边界的公开案例，以及明确标注为非事实记录的教学情景。' },
   '17-附录A-可直接复用的清单与模板.md': { title: '附录 A：可直接复用的清单与模板', description: '复用用例立项、上下文包、记忆合约、工具控制卡、Agent 评测与目标契约等资产。' },
   '20-附录D-资料出处与延伸阅读.md': { title: '附录 D：来源、公开案例与事实维护规范', description: '查看全书真实链接、公开案例登记、动态事实与引用规则，以及证据边界。' },
-  '23-附录G-AI-Failure-Casebook.md': { title: '附录 G：AI Failure Casebook', description: '查阅去标识化故障模式，理解上下文债务、记忆污染和工具异常的诊断与复盘。' }
+  '23-附录G-AI-Failure-Casebook.md': { title: '附录 G：AI Failure Casebook', description: '查阅去标识化故障模式，理解上下文债务、记忆污染和工具异常的诊断与复盘。' },
+  '16-后记-从个人提效到企业级稳定产出.md': { title: '后记：从个人提效到企业级稳定产出', description: '回顾如何把个人效率尝试沉淀为可复核、可维护、可接管的企业 AI 运行系统。' },
+  '18-附录B-常用指标与评测方法.md': { title: '附录 B：常用指标与评测方法', description: '参考企业 AI 质量、效率、成本、风险与运行稳定性的常用指标、口径和评测方法。' },
+  '19-附录C-工具与平台参考.md': { title: '附录 C：工具与平台参考', description: '以动态事实治理视角查看 AI 工具、平台与连接器的参考信息及选型边界。' },
+  '21-附录E-关于作者与进一步交流.md': { title: '附录 E：关于作者与进一步交流', description: '了解《企业 AI 稳定产出手册》的作者、开源协作方式与进一步交流入口。' },
+  '22-附录F-术语表.md': { title: '附录 F：术语表', description: '查询企业 AI 稳定产出、Skill、Agent、上下文、评测、治理与韧性相关术语。' },
+  'evidence/README.md': { title: '试点运行证据包', description: '查看企业 AI 试点如何记录范围、输入、评测、复核、偏差与后续决策的证据包结构。' },
+  'evidence/UC-CS-001_客户咨询回复试点证据包.md': { title: '客户咨询回复：试点运行证据包', description: '查看客户咨询回复用例的试点范围、评测方法、运行证据与使用边界。' },
+  'evidence/UC-PROD-001_会议纪要试点证据包.md': { title: '会议纪要：试点运行证据包', description: '查看会议纪要用例的试点范围、评测方法、运行证据与使用边界。' },
+  'facts/模型与工具动态事实卡登记册.md': { title: '模型与工具动态事实卡登记册', description: '查看如何登记、核验、复审和更新企业 AI 模型与工具的动态事实。' }
 }
 
 export function routeForSource(source: string): string {
