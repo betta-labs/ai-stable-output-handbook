@@ -30,6 +30,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -44,11 +47,13 @@ jobs:
       - name: Validate Markdown links
         run: pnpm lint:content
       - name: Build VitePress site
+        env:
+          VITEPRESS_BASE: ${{ steps.pages.outputs.base_path }}/
         run: pnpm docs:build
       - name: Verify SEO artifacts
+        env:
+          VITEPRESS_EXPECTED_BASE: ${{ steps.pages.outputs.base_path }}/
         run: pnpm test:site
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
       - name: Upload static artifact
         uses: actions/upload-pages-artifact@v3
         with:

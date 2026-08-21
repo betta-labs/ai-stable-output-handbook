@@ -1,10 +1,11 @@
-<!-- 运行手册档案馆：PDF下载与GitHub真源并列呈现，确保读者能获得当前版本与更新边界。 -->
 ---
 title: 下载与引用
 description: 下载《企业 AI 稳定产出手册》v2.0.0 PDF，访问GitHub真源，并按CC BY-NC 4.0了解使用与引用边界。
 outline: false
 editLink: false
 ---
+
+<!-- 运行手册档案馆：PDF下载与GitHub真源并列呈现，确保读者能获得当前版本与更新边界。 -->
 
 # 下载与引用
 

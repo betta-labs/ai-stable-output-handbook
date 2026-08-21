@@ -10,7 +10,8 @@
     "docs:preview": "vitepress preview .",
     "lint:content": "node scripts/check-content.mjs",
     "test:site": "node scripts/check-site.mjs",
-    "verify": "pnpm lint:content && pnpm docs:build && pnpm test:site"
+    "verify": "pnpm lint:content && pnpm docs:build && pnpm test:site",
+    "verify:project-pages": "pnpm lint:content && VITEPRESS_BASE=/ai-stable-output-handbook/ pnpm docs:build && VITEPRESS_EXPECTED_BASE=/ai-stable-output-handbook/ pnpm test:site"
   },
   "engines": {
     "node": ">=20.19.0"

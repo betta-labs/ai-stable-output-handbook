@@ -9,6 +9,12 @@ import { pageMeta, pageRoutes, routeForSource } from './page-meta'
 const SITE_URL = 'https://handbook.sanage.xyz'
 const REPOSITORY_URL = 'https://github.com/betta-labs/ai-stable-output-handbook'
 const DEFAULT_DESCRIPTION = '面向业务、交付、治理与培训的企业 AI 方法手册：从最小闭环到可复核、可维护、可接管的运行系统。'
+const requestedBase = process.env.VITEPRESS_BASE ?? '/'
+const BASE = (() => {
+  const trimmed = requestedBase.trim().replace(/^\/+|\/+$/g, '')
+  return trimmed ? `/${trimmed}/` : '/'
+})()
+const assetUrl = (file: string) => `${BASE}${file.replace(/^\//, '')}`
 
 const sidebar: DefaultTheme.Sidebar = {
   '/handbook/': [
@@ -66,6 +72,7 @@ export default defineConfig({
   title: '企业 AI 稳定产出手册',
   titleTemplate: false,
   description: DEFAULT_DESCRIPTION,
+  base: BASE,
   cleanUrls: true,
   lastUpdated: true,
   srcExclude: ['README.md', 'LICENSE', '.github/**', 'node_modules/**'],
@@ -74,8 +81,8 @@ export default defineConfig({
     ['meta', { name: 'author', content: 'Jace' }],
     ['meta', { name: 'theme-color', content: '#164E45' }],
     ['meta', { name: 'color-scheme', content: 'light' }],
-    ['link', { rel: 'icon', href: '/brand-mark.svg', type: 'image/svg+xml' }],
-    ['link', { rel: 'manifest', href: '/site.webmanifest' }]
+    ['link', { rel: 'icon', href: assetUrl('brand-mark.svg'), type: 'image/svg+xml' }],
+    ['link', { rel: 'manifest', href: assetUrl('site.webmanifest') }]
   ],
   sitemap: {
     hostname: SITE_URL,
