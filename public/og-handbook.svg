@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">企业 AI 稳定产出手册</title>
+  <desc id="description">从最小闭环到企业运行系统</desc>
+  <rect width="1200" height="630" fill="#f7f4ec"/>
+  <g stroke="#164e45" stroke-width="1" opacity="0.16">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200"/>
+    <path d="M80 0v630M160 0v630M240 0v630M320 0v630M400 0v630M480 0v630M560 0v630M640 0v630M720 0v630M800 0v630M880 0v630M960 0v630M1040 0v630M1120 0v630"/>
+  </g>
+  <g fill="#164e45">
+    <rect x="74" y="62" width="18" height="82"/><rect x="98" y="62" width="18" height="82"/><rect x="122" y="62" width="18" height="82"/>
+    <rect x="74" y="151" width="66" height="14" fill="#b7422d"/>
+  </g>
+  <text x="74" y="245" fill="#164e45" font-family="Arial, 'Noto Sans CJK SC', sans-serif" font-size="22" font-weight="700" letter-spacing="4">SANAGE / OPEN HANDBOOKS / 01</text>
+  <text x="74" y="350" fill="#16211d" font-family="Arial, 'Noto Sans CJK SC', sans-serif" font-size="76" font-weight="700">企业 AI 稳定产出手册</text>
+  <text x="78" y="420" fill="#41504a" font-family="Arial, 'Noto Serif CJK SC', serif" font-size="34">从最小闭环到企业运行系统</text>
+  <text x="78" y="536" fill="#164e45" font-family="Arial, 'Noto Sans CJK SC', sans-serif" font-size="25" font-weight="700">可复核  ·  可维护  ·  可接管</text>
+  <text x="1050" y="552" fill="#5e6662" font-family="Arial, sans-serif" font-size="22" text-anchor="end">v2.0.0</text>
+</svg>

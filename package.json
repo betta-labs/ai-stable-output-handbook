@@ -1,0 +1,22 @@
+{
+  "name": "enterprise-ai-stable-output-handbook",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "《企业 AI 稳定产出手册》的VitePress阅读站与内容校验工具。",
+  "scripts": {
+    "docs:dev": "vitepress dev .",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview .",
+    "lint:content": "node scripts/check-content.mjs",
+    "test:site": "node scripts/check-site.mjs",
+    "verify": "pnpm lint:content && pnpm docs:build && pnpm test:site"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

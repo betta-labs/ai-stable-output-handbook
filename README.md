@@ -21,9 +21,29 @@
 
 ## 阅读方式
 
-1. **在线阅读**：点击下方目录，按章节阅读当前工作版本。
+1. **在线阅读**：访问 [handbook.sanage.xyz](https://handbook.sanage.xyz/) 使用站内搜索、章节深链、模板导航和阅读分流；GitHub 仓库仍是版本、来源、事实卡和协作反馈的唯一真源。
 2. **本地阅读**：克隆本仓库后，使用支持 Markdown 的编辑器阅读和维护资产。
 3. **从诊断开始**：建议先阅读[第 2 章 自诊断](02-第2章-自诊断：定位你的真实问题.md)，再根据实际问题选择后续章节和模板。
+
+---
+
+## 文档站开发与部署
+
+本仓库内置 VitePress 阅读站。它直接渲染本仓库 Markdown，不复制正文；页面标题、摘要与稳定路由在 `.vitepress/page-meta.ts` 中维护，站点地图、规范链接、社交分享元信息和 JSON-LD 结构化数据由 `.vitepress/config.mts` 在构建时生成。
+
+```bash
+corepack enable
+pnpm install
+pnpm docs:dev
+```
+
+提交前请执行：
+
+```bash
+pnpm verify
+```
+
+GitHub Actions 会在 `main` 分支的内容或站点配置更新后构建并发布到 GitHub Pages。首次启用时，需要在仓库的 Pages 设置中选择 **GitHub Actions** 作为来源，并为 `handbook.sanage.xyz` 配置指向 GitHub Pages 的 DNS CNAME。构建默认使用 `public/og-handbook.svg` 作为社交分享图；如需覆盖更多社交平台的预览兼容性，发布前可将其替换为同名 1200×630 PNG，并同步更新 `.vitepress/config.mts`。
 
 ---
 

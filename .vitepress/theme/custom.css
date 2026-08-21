@@ -1,0 +1,87 @@
+/*
+ * 运行手册档案馆：证据优先、任务导向、克制层级、可操作性。
+ * 暖白纸张、石墨正文、运行墨绿与少量朱红风险色；避免泛科技渐变和营销式圆角卡片。
+ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+:root {
+  --vp-font-family-base: 'IBM Plex Sans', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --vp-c-brand-1: #164e45;
+  --vp-c-brand-2: #0f3d36;
+  --vp-c-brand-3: #216557;
+  --vp-c-brand-soft: rgba(22, 78, 69, 0.12);
+  --vp-c-bg: #f7f4ec;
+  --vp-c-bg-alt: #eeeadf;
+  --vp-c-bg-elv: #fffdf8;
+  --vp-c-bg-soft: #eeeadf;
+  --vp-c-text-1: #1d2523;
+  --vp-c-text-2: #4f5a56;
+  --vp-c-text-3: #7a817c;
+  --vp-c-divider: #d7d4c9;
+  --vp-c-gutter: #e7e3d8;
+  --vp-custom-block-tip-border: #164e45;
+  --vp-custom-block-tip-bg: #e8f1ec;
+  --vp-home-hero-name-color: #164e45;
+  --vp-button-brand-bg: #164e45;
+  --vp-button-brand-border: #164e45;
+  --vp-button-brand-hover-bg: #0f3d36;
+  --vp-button-brand-hover-border: #0f3d36;
+  --vp-button-alt-bg: transparent;
+  --vp-button-alt-border: #164e45;
+  --vp-button-alt-hover-bg: #e8f1ec;
+  --vp-button-alt-hover-border: #164e45;
+  --vp-button-alt-text: #164e45;
+}
+
+html { background: var(--vp-c-bg); }
+
+body {
+  color: var(--vp-c-text-1);
+  background: linear-gradient(rgba(22, 78, 69, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(22, 78, 69, 0.025) 1px, transparent 1px), var(--vp-c-bg);
+  background-size: 28px 28px;
+}
+
+.VPNav { border-bottom: 1px solid var(--vp-c-divider) !important; background: rgba(247, 244, 236, 0.94) !important; backdrop-filter: blur(12px); }
+.VPNavBarTitle .title { font-size: 0.86rem; font-weight: 700; letter-spacing: 0.03em; }
+.VPNavBarTitle .logo { width: 28px; height: 28px; }
+.VPDoc .content-container, .VPDoc.has-aside .content-container { max-width: 760px; }
+.VPDoc h1, .VPDoc h2, .VPDoc h3, .VPDoc h4 { color: #16211d; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; letter-spacing: -0.02em; }
+.VPDoc h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.18; border-bottom: 3px solid #164e45; padding-bottom: 1.25rem; }
+.VPDoc h2 { margin-top: 3.4rem; padding-top: 0.55rem; border-top: 1px solid var(--vp-c-divider); }
+.VPDoc p, .VPDoc li { font-family: 'Noto Serif SC', 'Songti SC', serif; font-size: 1rem; line-height: 1.95; }
+.VPDoc blockquote { border-left: 3px solid #b7422d; color: #4f4038; background: rgba(183, 66, 45, 0.055); border-radius: 0; }
+.VPDoc table { display: table; width: 100%; border-collapse: collapse; border: 1px solid var(--vp-c-divider); }
+.VPDoc tr:nth-child(2n) { background: rgba(22, 78, 69, 0.035); }
+.VPDoc th, .VPDoc td { border: 1px solid var(--vp-c-divider); }
+.VPDoc th { font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; color: #164e45; background: #e8f1ec; }
+.VPButton { border-radius: 2px !important; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-weight: 700; letter-spacing: 0.02em; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+.VPButton:active { transform: scale(0.97); }
+.handbook-home .VPDoc { padding-top: 0; }
+.handbook-home .container { max-width: 1200px; }
+.handbook-home .content-container { max-width: none !important; }
+.archive-home { display: grid; grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 2fr); gap: clamp(2rem, 6vw, 7rem); padding: clamp(3rem, 9vw, 8rem) 0 5rem; }
+.archive-index { border-top: 2px solid #164e45; padding-top: 1rem; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; }
+.archive-index__eyebrow, .archive-home__kicker, .archive-panel__label { margin: 0; color: #164e45; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif !important; font-size: 0.72rem !important; font-weight: 700; letter-spacing: 0.14em; line-height: 1.4 !important; text-transform: uppercase; }
+.archive-index__number { margin: 1.35rem 0 0.15rem; color: #164e45; font-size: clamp(4rem, 8vw, 7rem); font-weight: 700; letter-spacing: -0.08em; line-height: 0.9; }
+.archive-index__version { margin: 1.25rem 0 0; color: #4f5a56; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif !important; font-size: 0.86rem !important; line-height: 1.6 !important; }
+.archive-home h1 { max-width: 900px; margin: 0; padding: 0 0 1.35rem; border-bottom: 3px solid #164e45; color: #16211d; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-size: clamp(3rem, 7vw, 6.4rem); font-weight: 700; letter-spacing: -0.075em; line-height: 0.96; }
+.archive-home__lede { max-width: 680px; margin: 1.75rem 0 0; color: #41504a; font-family: 'Noto Serif SC', 'Songti SC', serif !important; font-size: clamp(1.1rem, 2vw, 1.34rem) !important; line-height: 1.85 !important; }
+.archive-home__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.2rem; }
+.archive-home__actions a { display: inline-flex; align-items: center; min-height: 42px; padding: 0 1rem; border: 1px solid #164e45; color: #164e45; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif !important; font-size: 0.9rem !important; font-weight: 700; line-height: 1 !important; text-decoration: none; }
+.archive-home__actions a:first-child, .archive-home__actions a:hover { color: #fffdf8; background: #164e45; }
+.archive-home__actions a:hover { background: #0f3d36; }
+.archive-signals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0 0 4.5rem; border: 1px solid var(--vp-c-divider); background: var(--vp-c-divider); }
+.archive-signal { padding: 1.35rem; background: #fffdf8; }
+.archive-signal strong { display: block; color: #164e45; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-size: 1.05rem; }
+.archive-signal span { display: block; margin-top: 0.6rem; color: #5e6662; font-family: 'Noto Serif SC', 'Songti SC', serif; font-size: 0.94rem; line-height: 1.7; }
+.archive-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; margin: 3rem 0 1rem; border: 1px solid var(--vp-c-divider); background: var(--vp-c-divider); }
+.archive-panel { padding: 1.5rem; background: #fffdf8; }
+.archive-panel--wide { grid-column: span 7; }
+.archive-panel--narrow { grid-column: span 5; }
+.archive-panel h2 { margin: 0.65rem 0 0; padding: 0; border: 0; font-size: 1.55rem; }
+.archive-panel p { margin: 0.85rem 0 0; }
+.archive-panel ul { margin: 1rem 0 0; padding-left: 1.2rem; }
+.archive-panel a { font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+@media (max-width: 768px) { .archive-home { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; } .archive-index__number { font-size: 4rem; } .archive-home h1 { font-size: clamp(2.8rem, 15vw, 4.5rem); } .archive-signals, .archive-grid { grid-template-columns: 1fr; } .archive-panel--wide, .archive-panel--narrow { grid-column: span 1; } }
+@media (prefers-reduced-motion: no-preference) { .archive-index, .archive-home__main, .archive-signal, .archive-panel { animation: archive-reveal 360ms cubic-bezier(0.23, 1, 0.32, 1) both; } .archive-home__main { animation-delay: 45ms; } .archive-signal:nth-child(2) { animation-delay: 55ms; } .archive-signal:nth-child(3) { animation-delay: 90ms; } .archive-panel:nth-child(2) { animation-delay: 70ms; } }
+@keyframes archive-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

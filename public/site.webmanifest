@@ -1,0 +1,11 @@
+{
+  "name": "企业 AI 稳定产出手册",
+  "short_name": "AI 稳定产出手册",
+  "description": "从最小闭环到企业运行系统的开放方法手册。",
+  "lang": "zh-Hans",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7f4ec",
+  "theme_color": "#164e45",
+  "icons": [{ "src": "/brand-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

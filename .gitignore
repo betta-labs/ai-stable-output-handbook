@@ -1,0 +1,7 @@
+# VitePress build output and dependency cache
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+
+# Operating-system metadata
+.DS_Store
