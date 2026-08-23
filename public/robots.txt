@@ -1,4 +1,56 @@
+# https://handbook.sanage.xyz/robots.txt
+# 企业 AI 稳定产出手册 - 允许主流搜索引擎与 AI 检索爬虫
+
 User-agent: *
 Allow: /
 
+# ---------- OpenAI / ChatGPT ----------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# ---------- Perplexity ----------
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ---------- Anthropic / Claude ----------
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# ---------- Google ----------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# ---------- Microsoft / Bing / Copilot ----------
+User-agent: Bingbot
+Allow: /
+
+# ---------- 其他常见爬虫 ----------
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap
 Sitemap: https://handbook.sanage.xyz/sitemap.xml
