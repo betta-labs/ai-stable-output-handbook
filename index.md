@@ -72,3 +72,12 @@ editLink: false
     <p><a href="./updates">阅读 v2.0.0 更新说明 →</a></p>
   </section>
 </div>
+
+<div class="archive-grid">
+  <section class="archive-panel archive-panel--wide">
+    <p class="archive-panel__label">05 / 专题学习</p>
+    <h2>按问题进入专题，而不是按章节阅读。</h2>
+    <p>专题页直接回答企业 AI 落地、Agent 治理与输出质量评测中的高频问题，并链接到手册章节、模板与证据资产。</p>
+    <p><a href="./learn/enterprise-ai/">企业 AI 落地指南 →</a> · <a href="./learn/ai-agent/">企业 AI Agent 落地指南 →</a> · <a href="./learn/ai-reliability/">AI 输出质量与稳定产出指南 →</a></p>
+  </section>
+</div>

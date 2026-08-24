@@ -20,6 +20,27 @@ const AUTHOR_URL = `${SITE_URL}/appendices/about-the-author`
 const PUBLISHER = { '@type': 'Organization', name: 'SANAGE', url: 'https://sanage.xyz/' }
 
 const sidebar: DefaultTheme.Sidebar = {
+  '/learn/': [
+    { text: '专题入口', items: [
+      { text: '企业 AI 落地指南', link: '/learn/enterprise-ai' },
+      { text: '企业 AI Agent 落地指南', link: '/learn/ai-agent' },
+      { text: 'AI 输出质量与稳定产出指南', link: '/learn/ai-reliability' }
+    ] },
+    { text: '企业 AI 落地', collapsed: false, items: [
+      { text: '企业 AI 怎么落地', link: '/learn/enterprise-ai/implementation' },
+      { text: '最小闭环怎么设计', link: '/learn/enterprise-ai/minimum-closed-loop' },
+      { text: 'AI ROI 怎么算', link: '/learn/enterprise-ai/roi' }
+    ] },
+    { text: '企业 AI Agent', collapsed: false, items: [
+      { text: 'AI Agent 如何治理', link: '/learn/ai-agent/governance' },
+      { text: 'Agent 与工作流的区别', link: '/learn/ai-agent/workflow-vs-agent' }
+    ] },
+    { text: 'AI 稳定产出', collapsed: false, items: [
+      { text: 'AI 输出不稳定怎么办', link: '/learn/ai-reliability/output-quality' },
+      { text: '企业 AI 知识库怎么建设', link: '/learn/ai-reliability/knowledge-base' },
+      { text: 'AI 效果怎么评测', link: '/learn/ai-reliability/evaluation' }
+    ] }
+  ],
   '/handbook/': [
     { text: '阅读入口', items: [{ text: '先定位你的问题', link: '/start' }, { text: '自序', link: '/handbook/preface' }] },
     { text: '第一部分：认知与诊断', collapsed: false, items: [
@@ -93,11 +114,16 @@ export default defineConfig({
   sitemap: {
     hostname: SITE_URL,
     lastmodDateOnly: true,
-    transformItems: (items) => items.filter((item) => item.url !== '/404').map((item) => ({
-      ...item,
-      changefreq: item.url === '/' || item.url.startsWith('/updates') ? 'weekly' : 'monthly',
-      priority: item.url === '/' ? 1 : item.url.startsWith('/handbook/') ? 0.9 : 0.7
-    }))
+    transformItems: (items) => items
+      .filter((item) => new URL(item.url, SITE_URL).pathname !== '/404')
+      .map((item) => {
+        const path = new URL(item.url, SITE_URL).pathname
+        return {
+          ...item,
+          changefreq: path === '/' || path.startsWith('/updates') ? 'weekly' : 'monthly',
+          priority: path === '/' ? 1 : path.startsWith('/handbook/') ? 0.9 : 0.7
+        }
+      })
   },
   transformPageData(pageData) {
     const meta = pageMeta[pageData.relativePath]
@@ -112,7 +138,9 @@ export default defineConfig({
     const source = sourceForPage(context.page)
     const meta = pageMeta[source]
     const canonical = new URL(routeForSource(source), SITE_URL).toString()
-    const isHome = canonical === `${SITE_URL}/`
+    const canonicalUrl = source.endsWith('/index.md') && !canonical.endsWith('/') ? `${canonical}/` : canonical
+    const isHome = canonicalUrl === `${SITE_URL}/`
+    const isAbout = canonicalUrl === `${SITE_URL}/about`
     const title = isHome ? '企业 AI 稳定产出手册' : meta?.title ?? context.title
     const description = meta?.description ?? context.description ?? DEFAULT_DESCRIPTION
     const lastUpdated = context.pageData.lastUpdated ? new Date(context.pageData.lastUpdated).toISOString() : undefined
@@ -122,14 +150,19 @@ export default defineConfig({
     const schema = isHome
       ? { '@context': 'https://schema.org', '@graph': [
         { '@type': 'WebSite', name: '企业 AI 稳定产出手册', url: SITE_URL, inLanguage: 'zh-Hans', description: DEFAULT_DESCRIPTION, publisher: PUBLISHER },
-        { '@type': 'Book', name: '企业 AI 稳定产出手册', version: '2.0.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: SITE_URL, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
+        { '@type': 'Book', name: '企业 AI 稳定产出手册', version: '2.0.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: canonicalUrl, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
       ] }
-      : { '@context': 'https://schema.org', '@graph': [
-        { '@type': 'Article', headline: title, description, inLanguage: 'zh-Hans', url: canonical, mainEntityOfPage: { '@type': 'WebPage', '@id': canonical }, image: OG_IMAGE, datePublished: publishedAt, ...(lastUpdated ? { dateModified: lastUpdated } : {}), author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, isPartOf: { '@type': 'Book', name: '企业 AI 稳定产出手册', url: SITE_URL } },
-        { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
-      ] }
+      : isAbout
+        ? { '@context': 'https://schema.org', '@graph': [
+          { '@type': 'ProfilePage', name: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntity: { '@type': 'Person', name: 'Jace', url: canonicalUrl, description, email: 'jacejacejia@gmail.com', knowsAbout: ['企业 AI 落地', 'AI Agent 治理', 'AI 评测', 'AI 工作流', 'AI 稳定产出'], sameAs: REPOSITORY_URL } },
+          { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
+        ] }
+        : { '@context': 'https://schema.org', '@graph': [
+          { '@type': 'Article', headline: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl }, image: OG_IMAGE, datePublished: publishedAt, ...(lastUpdated ? { dateModified: lastUpdated } : {}), author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, isPartOf: { '@type': 'Book', name: '企业 AI 稳定产出手册', url: SITE_URL } },
+          { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
+        ] }
     return [
-      ['link', { rel: 'canonical', href: canonical }],
+      ['link', { rel: 'canonical', href: canonicalUrl }],
       ['meta', { name: 'description', content: description }],
       ['meta', { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }],
       ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
@@ -137,7 +170,7 @@ export default defineConfig({
       ['meta', { property: 'og:site_name', content: '企业 AI 稳定产出手册' }],
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
-      ['meta', { property: 'og:url', content: canonical }],
+      ['meta', { property: 'og:url', content: canonicalUrl }],
       ['meta', { property: 'og:image', content: OG_IMAGE }],
       ['meta', { property: 'og:image:secure_url', content: OG_IMAGE }],
       ['meta', { property: 'og:image:type', content: 'image/png' }],
@@ -177,7 +210,7 @@ export default defineConfig({
     logo: '/brand-mark.svg',
     siteTitle: '企业 AI 稳定产出手册',
     nav: [
-      { text: '从问题开始', link: '/start' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
+      { text: '从问题开始', link: '/start' }, { text: '专题', link: '/learn/enterprise-ai', activeMatch: '^/learn/' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
       { text: '模板', link: '/templates', activeMatch: '^/appendices/|^/templates' }, { text: '案例与证据', link: '/cases', activeMatch: '^/cases|^/evidence/|^/facts/' },
       { text: '更新', link: '/updates' }, { text: '下载 PDF', link: '/download' }
     ],

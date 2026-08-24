@@ -9,6 +9,7 @@ export type PageMeta = {
 }
 
 export const pageRoutes: Record<string, string> = {
+  'about.md': 'about.md',
   '00-自序.md': 'handbook/preface.md',
   '01-第1章-企业AI为什么难以稳定产出.md': 'handbook/why-ai-output-is-unstable.md',
   '02-第2章-自诊断：定位你的真实问题.md': 'handbook/diagnose-your-constraint.md',
@@ -35,10 +36,22 @@ export const pageRoutes: Record<string, string> = {
   '22-附录F-术语表.md': 'appendices/glossary.md',
   '23-附录G-AI-Failure-Casebook.md': 'appendices/ai-failure-casebook.md',
   'evidence/README.md': 'evidence/pilot-evidence-pack.md',
-  'facts/模型与工具动态事实卡登记册.md': 'facts/model-and-tool-fact-register.md'
+  'facts/模型与工具动态事实卡登记册.md': 'facts/model-and-tool-fact-register.md',
+  'learn/enterprise-ai/index.md': 'learn/enterprise-ai/index.md',
+  'learn/enterprise-ai/implementation.md': 'learn/enterprise-ai/implementation.md',
+  'learn/enterprise-ai/minimum-closed-loop.md': 'learn/enterprise-ai/minimum-closed-loop.md',
+  'learn/enterprise-ai/roi.md': 'learn/enterprise-ai/roi.md',
+  'learn/ai-agent/index.md': 'learn/ai-agent/index.md',
+  'learn/ai-agent/governance.md': 'learn/ai-agent/governance.md',
+  'learn/ai-agent/workflow-vs-agent.md': 'learn/ai-agent/workflow-vs-agent.md',
+  'learn/ai-reliability/index.md': 'learn/ai-reliability/index.md',
+  'learn/ai-reliability/output-quality.md': 'learn/ai-reliability/output-quality.md',
+  'learn/ai-reliability/knowledge-base.md': 'learn/ai-reliability/knowledge-base.md',
+  'learn/ai-reliability/evaluation.md': 'learn/ai-reliability/evaluation.md'
 }
 
 export const pageMeta: Record<string, PageMeta> = {
+  'about.md': { title: '关于作者与《企业 AI 稳定产出手册》', description: '了解《企业 AI 稳定产出手册》的作者背景、研究方法、维护方式、版本历史与引用规范。' },
   '00-自序.md': { title: '自序：为什么要讨论企业 AI 的稳定产出', description: '理解本手册的写作动机、使用边界，以及从个人提效到企业运行系统的核心问题。' },
   '01-第1章-企业AI为什么难以稳定产出.md': { title: '第 1 章：企业 AI 为什么难以稳定产出', description: '识别个人提效与组织提效之间的鸿沟，理解企业 AI 结果不稳定的系统性原因。' },
   '02-第2章-自诊断：定位你的真实问题.md': { title: '第 2 章：自诊断，定位你的真实问题', description: '从场景、上下文、工具、责任与验证等维度，定位企业 AI 当前最真实的约束。' },
@@ -67,7 +80,18 @@ export const pageMeta: Record<string, PageMeta> = {
   'evidence/README.md': { title: '试点运行证据包', description: '查看企业 AI 试点如何记录范围、输入、评测、复核、偏差与后续决策的证据包结构。' },
   'evidence/UC-CS-001_客户咨询回复试点证据包.md': { title: '客户咨询回复：试点运行证据包', description: '查看客户咨询回复用例的试点范围、评测方法、运行证据与使用边界。' },
   'evidence/UC-PROD-001_会议纪要试点证据包.md': { title: '会议纪要：试点运行证据包', description: '查看会议纪要用例的试点范围、评测方法、运行证据与使用边界。' },
-  'facts/模型与工具动态事实卡登记册.md': { title: '模型与工具动态事实卡登记册', description: '查看如何登记、核验、复审和更新企业 AI 模型与工具的动态事实。' }
+  'facts/模型与工具动态事实卡登记册.md': { title: '模型与工具动态事实卡登记册', description: '查看如何登记、核验、复审和更新企业 AI 模型与工具的动态事实。' },
+  'learn/enterprise-ai/index.md': { title: '企业 AI 落地指南：从 AI 工具到组织生产能力', description: '从场景选择、最小闭环、工作流设计到评测与治理，理解企业 AI 落地的完整路径与常见失败原因。' },
+  'learn/enterprise-ai/implementation.md': { title: '企业 AI 怎么落地？从工具到组织能力的五步方法', description: '企业 AI 落地不是购买工具或做一次 Demo。按五步方法定位问题、设计闭环、验证价值并持续运营。' },
+  'learn/enterprise-ai/minimum-closed-loop.md': { title: '企业 AI 最小闭环怎么设计？从试点到生产的完整路径', description: '最小闭环是验证企业 AI 用例的最低成本方式。掌握场景选择、任务定义、验证清单与阶段闸门。' },
+  'learn/enterprise-ai/roi.md': { title: '企业 AI ROI 怎么算？避免三种"假账"的价值评估方法', description: 'AI ROI 常被高估。用 TCO、已实现收益与容量价值代理的口径，算清企业 AI 的真实投入与回报。' },
+  'learn/ai-agent/index.md': { title: '企业 AI Agent 落地指南：治理、评测与人工接管', description: '企业 AI Agent 的价值来自受控编排，而非自主性。理解 Agent 适用条件、运行合约与治理要点。' },
+  'learn/ai-agent/governance.md': { title: 'AI Agent 如何治理？权限、上下文、工具与人工接管', description: 'AI Agent 治理不等于事后审核。用运行合约、最小权限、预算熔断和人工接管让 Agent 安全可控。' },
+  'learn/ai-agent/workflow-vs-agent.md': { title: 'AI Agent 和 AI 工作流有什么区别？什么时候才需要 Agent', description: '先固定工作流，再评估 Agent。理解两种形态的边界，避免为"更智能"而增加不必要的复杂度。' },
+  'learn/ai-reliability/index.md': { title: 'AI 输出质量与稳定产出指南：让 AI 结果可复核、可维护', description: 'AI 输出不稳定通常不是模型问题。从任务定义、知识、上下文、验证与回退定位并修复根因。' },
+  'learn/ai-reliability/output-quality.md': { title: 'AI 输出不稳定怎么办？定位与修复的四层检查', description: 'AI 输出时好时坏？按任务、知识、工作流与治理四层定位根因，用验证清单与回退机制稳定结果。' },
+  'learn/ai-reliability/knowledge-base.md': { title: '企业 AI 知识库怎么建设？为什么"把文档丢进 RAG"通常不够', description: '知识库稳定产出的前提是 Owner、版本与来源，而非检索技术。先建最小上下文包，再决定是否上 RAG。' },
+  'learn/ai-reliability/evaluation.md': { title: 'AI 效果怎么评测？从通过率到真实价值的三级指标', description: 'AI 评测先定义"好"再测量。用验证清单、Rubric 与运行证据区分"通过了检查"和"被业务采用"。' }
 }
 
 export function routeForSource(source: string): string {

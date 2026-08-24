@@ -10,7 +10,7 @@ const normalizedBase = (() => {
   const trimmed = expectedBase.trim().replace(/^\/+|\/+$/g, '')
   return trimmed ? `/${trimmed}/` : '/'
 })()
-const requiredFiles = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'og-handbook.svg', 'og-handbook.png', 'handbook/preface.html', 'templates.html', 'download.html']
+const requiredFiles = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'og-handbook.svg', 'og-handbook.png', 'handbook/preface.html', 'templates.html', 'download.html', 'learn/enterprise-ai/index.html', 'learn/ai-agent/index.html', 'learn/ai-reliability/index.html', 'about.html']
 const failures = []
 
 async function findHtmlFiles(directory, prefix = '') {
@@ -50,7 +50,14 @@ if (index.includes('og-handbook.svg')) failures.push('首页仍将SVG用作社�
 const notFound = await readFile(path.join(DIST, '404.html'), 'utf8').catch(() => '')
 if (!notFound.includes('name="robots" content="noindex, nofollow"')) failures.push('404页面缺少noindex索引控制。')
 if (!sitemap.includes('https://handbook.sanage.xyz/handbook/preface')) failures.push('站点地图未包含手册章节入口。')
+if (!sitemap.includes('https://handbook.sanage.xyz/learn/enterprise-ai')) failures.push('站点地图未包含学习专题入口。')
+if (!sitemap.includes('https://handbook.sanage.xyz/about')) failures.push('站点地图未包含关于作者页面。')
 if (!robots.includes('https://handbook.sanage.xyz/sitemap.xml')) failures.push('robots.txt 未声明站点地图。')
+if (sitemap.includes('https://handbook.sanage.xyz/404')) failures.push('站点地图不应包含 404 页面。')
+if (!sitemap.includes('<loc>https://handbook.sanage.xyz/</loc><lastmod>')) failures.push('站点地图缺少首页条目。')
+if (!/https:\/\/handbook\.sanage\.xyz\/<\/loc><lastmod>[^<]*<\/lastmod><changefreq>weekly<\/changefreq><priority>1\.0<\/priority>/.test(sitemap)) {
+  failures.push('首页在站点地图中应标记为 weekly / priority 1.0。')
+}
 
 for (const file of await findHtmlFiles(DIST)) {
   const html = await readFile(path.join(DIST, file), 'utf8')
@@ -62,6 +69,7 @@ for (const file of await findHtmlFiles(DIST)) {
   if (!title) failures.push(`${file} 缺少页面标题。`)
   if (!description) failures.push(`${file} 缺少页面摘要。`)
   if (!canonical.startsWith('https://handbook.sanage.xyz/')) failures.push(`${file} 缺少自定义域名canonical。`)
+  if (/^learn\/[^/]+\/index\.html$/.test(file) && !canonical.endsWith('/')) failures.push(`${file} 的 canonical 应为目录式（带尾斜杠）。`)
   if (!robotsMeta.includes('index, follow')) failures.push(`${file} 缺少可索引robots规则。`)
   for (const signal of ['property="og:title"', 'property="og:image"', 'name="twitter:card"', 'application/ld+json']) {
     if (!html.includes(signal)) failures.push(`${file} 缺少页面级SEO信号：${signal}`)
