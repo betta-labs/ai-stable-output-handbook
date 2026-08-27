@@ -30,7 +30,7 @@ editLink: false
       内容覆盖自诊断、最小闭环、上下文与知识、Agent 治理、评测与回退，供业务、交付与治理团队直接取用。
     </p>
     <div class="archive-home__actions">
-      <a href="./start" data-analytics="handbook_cta_click">从自诊断开始</a>
+      <a href="./start" data-analytics="handbook_cta_click">按问题选择入口</a>
       <a href="./download" data-analytics="handbook_pdf_click">下载 PDF</a>
       <a href="https://github.com/betta-labs/ai-stable-output-handbook" data-analytics="handbook_source_click">查看 GitHub 真源</a>
     </div>
@@ -46,9 +46,10 @@ editLink: false
 <div class="archive-grid">
   <section class="archive-panel archive-panel--wide">
     <p class="archive-panel__label">01 / 从约束开始</p>
-    <h2>企业 AI 推不动，通常不是先换模型，而是先定位不稳定发生在哪里。</h2>
-    <p>从第 2 章自诊断开始，按任务定义、知识、工作流、责任与验证定位真实约束，再选择后续章节和模板。</p>
-    <p><a href="./start">进入问题分流 →</a></p>
+    <h2>先分清：你是在做组织取舍，还是在解决一条具体工作流。</h2>
+    <p>组织级问题先处理为什么做、做什么和不做什么；单个团队或工作流的问题再从自诊断开始，按任务定义、知识、责任与验证定位真实约束。</p>
+    <p>不知道卡在哪，走“按问题”；知道自己承担什么角色，走“按角色”；只想研究一个主题，走“专题学习”。三种入口回答不同问题，不必全部走完。</p>
+    <p><a href="./start">按问题进入 →</a> · <a href="./quickstart">按角色行动 →</a> · <a href="./learn/enterprise-ai/">按主题学习 →</a></p>
   </section>
 
   <section class="archive-panel archive-panel--narrow">

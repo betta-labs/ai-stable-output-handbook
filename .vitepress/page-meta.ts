@@ -10,7 +10,10 @@ export type PageMeta = {
 
 export const pageRoutes: Record<string, string> = {
   'about.md': 'about.md',
+  'executive-summary.md': 'executive-summary.md',
+  'quickstart.md': 'quickstart.md',
   '00-自序.md': 'handbook/preface.md',
+  '01-开篇-企业AI战略与业务对齐.md': 'handbook/ai-strategy-and-alignment.md',
   '01-第1章-企业AI为什么难以稳定产出.md': 'handbook/why-ai-output-is-unstable.md',
   '02-第2章-自诊断：定位你的真实问题.md': 'handbook/diagnose-your-constraint.md',
   '03-第3章-认知校准：AI的真实能力边界.md': 'handbook/calibrate-ai-capabilities.md',
@@ -36,6 +39,8 @@ export const pageRoutes: Record<string, string> = {
   '22-附录F-术语表.md': 'appendices/glossary.md',
   '23-附录G-AI-Failure-Casebook.md': 'appendices/ai-failure-casebook.md',
   'evidence/README.md': 'evidence/pilot-evidence-pack.md',
+  'evidence/UC-CS-001_客户咨询回复试点证据包.md': 'evidence/UC-CS-001_客户咨询回复试点证据包.md',
+  'evidence/UC-PROD-001_会议纪要试点证据包.md': 'evidence/UC-PROD-001_会议纪要试点证据包.md',
   'facts/模型与工具动态事实卡登记册.md': 'facts/model-and-tool-fact-register.md',
   'learn/enterprise-ai/index.md': 'learn/enterprise-ai/index.md',
   'learn/enterprise-ai/implementation.md': 'learn/enterprise-ai/implementation.md',
@@ -52,7 +57,10 @@ export const pageRoutes: Record<string, string> = {
 
 export const pageMeta: Record<string, PageMeta> = {
   'about.md': { title: '关于作者与《企业 AI 稳定产出手册》', description: '了解《企业 AI 稳定产出手册》的作者背景、研究方法、维护方式、版本历史与引用规范。' },
+  'executive-summary.md': { title: '高管执行摘要：企业 AI 稳定产出的决策要览', description: '面向 CEO 与高管的决策摘要：核心论点、90 天计划、10 条治理铁律、阶段闸门、关键指标与风险签字责任。' },
+  'quickstart.md': { title: '角色化快速开始：从战略到落地的行动路线', description: '按 CEO、业务负责人、员工、知识/技术 Owner 与 AI COE 角色，找到第一周、第一个月与第一个季度的行动清单。' },
   '00-自序.md': { title: '自序：为什么要讨论企业 AI 的稳定产出', description: '理解本手册的写作动机、使用边界，以及从个人提效到企业运行系统的核心问题。' },
+  '01-开篇-企业AI战略与业务对齐.md': { title: '企业 AI 战略与业务对齐：先决定为什么做、做什么、不做什么', description: '在启动任何试点之前，先完成战略内核、业务对齐、预算排序与高管治理，避免"为 AI 而 AI"。' },
   '01-第1章-企业AI为什么难以稳定产出.md': { title: '第 1 章：企业 AI 为什么难以稳定产出', description: '识别个人提效与组织提效之间的鸿沟，理解企业 AI 结果不稳定的系统性原因。' },
   '02-第2章-自诊断：定位你的真实问题.md': { title: '第 2 章：自诊断，定位你的真实问题', description: '从场景、上下文、工具、责任与验证等维度，定位企业 AI 当前最真实的约束。' },
   '03-第3章-认知校准：AI的真实能力边界.md': { title: '第 3 章：认知校准，AI 的真实能力边界', description: '以任务和证据而非抽象能力叙事校准预期，并建立模型与工具的动态事实治理。' },

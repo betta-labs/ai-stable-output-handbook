@@ -4,6 +4,7 @@
  */
 import { defineConfig } from 'vitepress'
 import type { DefaultTheme } from 'vitepress'
+import path from 'node:path'
 import { pageMeta, pageRoutes, routeForSource } from './page-meta'
 
 const SITE_URL = 'https://handbook.sanage.xyz'
@@ -18,6 +19,19 @@ const assetUrl = (file: string) => `${BASE}${file.replace(/^\//, '')}`
 const OG_IMAGE = `${SITE_URL}/og-handbook.png`
 const AUTHOR_URL = `${SITE_URL}/appendices/about-the-author`
 const PUBLISHER = { '@type': 'Organization', name: 'SANAGE', url: 'https://sanage.xyz/' }
+
+// VitePress 死链检查按源码路径比较，而本站把源码重写为英文路由；
+// 这里从 pageRoutes 生成合法路径白名单（含路由与源码两种形式），避免误报。
+const knownLinkPaths = new Set<string>()
+for (const source of Object.keys(pageRoutes)) {
+  const withoutExt = source.replace(/\.md$/, '')
+  knownLinkPaths.add(withoutExt)
+  knownLinkPaths.add(withoutExt.replace(/\/index$/, ''))
+  knownLinkPaths.add(routeForSource(source).replace(/^\//, '').replace(/\/$/, ''))
+}
+// 源码路径 → 重写路径 的反查表：相对链接按源码目录书写，而不是按重写后的路由目录。
+const sourceByRewritten = new Map<string, string>()
+for (const [source, rewritten] of Object.entries(pageRoutes)) sourceByRewritten.set(rewritten, source)
 
 const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
@@ -42,8 +56,15 @@ const sidebar: DefaultTheme.Sidebar = {
     ] }
   ],
   '/handbook/': [
-    { text: '阅读入口', items: [{ text: '先定位你的问题', link: '/start' }, { text: '自序', link: '/handbook/preface' }] },
+    { text: '阅读入口', items: [
+      { text: '高管执行摘要', link: '/executive-summary' },
+      { text: '角色化快速开始', link: '/quickstart' },
+      { text: '先定位你的问题', link: '/start' },
+      { text: '开篇：企业 AI 战略与业务对齐', link: '/handbook/ai-strategy-and-alignment' },
+      { text: '自序', link: '/handbook/preface' }
+    ] },
     { text: '第一部分：认知与诊断', collapsed: false, items: [
+      { text: '开篇：企业 AI 战略与业务对齐', link: '/handbook/ai-strategy-and-alignment' },
       { text: '第 1 章：为什么难以稳定产出', link: '/handbook/why-ai-output-is-unstable' },
       { text: '第 2 章：自诊断', link: '/handbook/diagnose-your-constraint' },
       { text: '第 3 章：认知校准', link: '/handbook/calibrate-ai-capabilities' }
@@ -100,6 +121,11 @@ export default defineConfig({
   lastUpdated: true,
   srcExclude: ['README.md', 'LICENSE', '.github/**', 'node_modules/**'],
   rewrites: pageRoutes,
+  ignoreDeadLinks: [(url: string) => {
+    let normalized = url.replace(/^\.?\//, '').split(/[?#]/)[0].replace(/\/$/, '')
+    try { normalized = decodeURIComponent(normalized) } catch { /* 保留原值 */ }
+    return knownLinkPaths.has(normalized)
+  }],
   head: [
     ['meta', { name: 'author', content: 'Jace' }],
     ['meta', { name: 'application-name', content: '企业 AI 稳定产出手册' }],
@@ -195,12 +221,29 @@ export default defineConfig({
       const fallbackRender = (tokens, index, options, _env, self) => self.renderToken(tokens, index, options)
       const defaultLinkRender = markdown.renderer.rules.link_open ?? fallbackRender
 
+      // VitePress 会把相对 .md 链接按源码路径渲染成相对 URL，但本站通过 pageRoutes 把源码重写为英文路由；
+      // 这里统一把可解析的 .md 链接重写为真实路由，避免正文链接指向不存在的源码路径。
+      const resolveSourcePath = (envRelativePath: string, rawTarget: string): string | null => {
+        let target = rawTarget
+        try { target = decodeURIComponent(rawTarget) } catch { /* 保留原值 */ }
+        const clean = target.split('#')[0].split('?')[0]
+        if (!clean.endsWith('.md')) return null
+        const sourcePath = sourceByRewritten.get(envRelativePath) ?? envRelativePath
+        const base = path.posix.dirname(sourcePath)
+        const resolved = clean.startsWith('/')
+          ? clean.replace(/^\//, '')
+          : path.posix.normalize(path.posix.join(base, clean))
+        return resolved
+      }
+
       markdown.renderer.rules.link_open = (tokens, index, options, env, self) => {
         const href = tokens[index].attrGet('href')
-        if (href?.startsWith('facts/')) {
-          const source = decodeURIComponent(href)
-          const handbookRoute = pageRoutes[source]
-          if (handbookRoute) tokens[index].attrSet('href', routeForSource(source))
+        if (href && env?.relativePath) {
+          const resolved = resolveSourcePath(env.relativePath as string, href)
+          if (resolved && pageRoutes[resolved]) {
+            const hash = href.includes('#') ? `#${href.split('#').slice(1).join('#')}` : ''
+            tokens[index].attrSet('href', `${routeForSource(resolved)}${hash}`)
+          }
         }
         return defaultLinkRender(tokens, index, options, env, self)
       }
@@ -210,7 +253,7 @@ export default defineConfig({
     logo: '/brand-mark.svg',
     siteTitle: '企业 AI 稳定产出手册',
     nav: [
-      { text: '从问题开始', link: '/start' }, { text: '专题', link: '/learn/enterprise-ai', activeMatch: '^/learn/' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
+      { text: '快速开始', link: '/quickstart' }, { text: '从问题开始', link: '/start' }, { text: '专题', link: '/learn/enterprise-ai', activeMatch: '^/learn/' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
       { text: '模板', link: '/templates', activeMatch: '^/appendices/|^/templates' }, { text: '案例与证据', link: '/cases', activeMatch: '^/cases|^/evidence/|^/facts/' },
       { text: '更新', link: '/updates' }, { text: '下载 PDF', link: '/download' }
     ],
