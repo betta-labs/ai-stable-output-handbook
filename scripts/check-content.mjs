@@ -59,12 +59,15 @@ const p0Sources = {
   start: path.join(ROOT, 'start.md'),
   quickstart: path.join(ROOT, 'quickstart.md'),
   executiveSummary: path.join(ROOT, 'executive-summary.md'),
+  chapterTwo: path.join(ROOT, '02-第2章-自诊断：定位你的真实问题.md'),
   chapterFive: path.join(ROOT, '05-第5章-数据与知识：稳定产出的地基.md'),
   chapterSix: path.join(ROOT, '06-第6章-场景落地：最小闭环设计.md'),
   chapterSeven: path.join(ROOT, '07-第7章-员工工作方法：人机协作的日常实践.md'),
+  chapterEight: path.join(ROOT, '08-第8章-从1到N：多场景扩展与优先级管理.md'),
   chapterNine: path.join(ROOT, '09-第9章-Agent与自动化：决策框架与治理要点.md'),
   chapterEleven: path.join(ROOT, '11-第11章-价值评估与评测体系：如何算清AI的账.md'),
   chapterTwelve: path.join(ROOT, '12-第12章-治理与组织协同.md'),
+  chapterFourteen: path.join(ROOT, '14-第14章-AI依赖与组织韧性.md'),
   chapterSixteen: path.join(ROOT, '16-第16章-完整案例集.md'),
   appendix: path.join(ROOT, '17-附录A-可直接复用的清单与模板.md'),
   templates: path.join(ROOT, 'templates.md'),
@@ -78,18 +81,21 @@ for (const [label, source] of Object.entries(p0Sources)) {
 }
 
 if (!errors.length) {
-  const [readme, strategicOpening, start, quickstart, executiveSummary, chapterFive, chapterSix, chapterSeven, chapterNine, chapterEleven, chapterTwelve, chapterSixteen, appendix, templates, decisionKernel, chapterResponsibilityMap, maintenanceCadence] = await Promise.all([
+  const [readme, strategicOpening, start, quickstart, executiveSummary, chapterTwo, chapterFive, chapterSix, chapterSeven, chapterEight, chapterNine, chapterEleven, chapterTwelve, chapterFourteen, chapterSixteen, appendix, templates, decisionKernel, chapterResponsibilityMap, maintenanceCadence] = await Promise.all([
     readFile(p0Sources.readme, 'utf8'),
     readFile(p0Sources.strategicOpening, 'utf8'),
     readFile(p0Sources.start, 'utf8'),
     readFile(p0Sources.quickstart, 'utf8'),
     readFile(p0Sources.executiveSummary, 'utf8'),
+    readFile(p0Sources.chapterTwo, 'utf8'),
     readFile(p0Sources.chapterFive, 'utf8'),
     readFile(p0Sources.chapterSix, 'utf8'),
     readFile(p0Sources.chapterSeven, 'utf8'),
+    readFile(p0Sources.chapterEight, 'utf8'),
     readFile(p0Sources.chapterNine, 'utf8'),
     readFile(p0Sources.chapterEleven, 'utf8'),
     readFile(p0Sources.chapterTwelve, 'utf8'),
+    readFile(p0Sources.chapterFourteen, 'utf8'),
     readFile(p0Sources.chapterSixteen, 'utf8'),
     readFile(p0Sources.appendix, 'utf8'),
     readFile(p0Sources.templates, 'utf8'),
@@ -114,6 +120,26 @@ if (!errors.length) {
     errors.push('quickstart.md：必须声明其角色行动页职责，不得重定义战略、阶段闸门或指标')
   }
 
+  if (!chapterTwo.includes('## 先看答案：30 秒决定从哪里开始') || !chapterTwo.includes('读完本章，你应能完成三件事')) {
+    errors.push('第2章：必须在首段诊断细节前说明30秒结论与读完可完成的行动产出')
+  }
+
+  if (!chapterSix.includes('## 先看答案：首轮先留下三项产出') || !chapterSix.includes('会让试点越做越乱的五种做法')) {
+    errors.push('第6章：必须在完整步骤前提供首轮三项产出与高影响反模式')
+  }
+
+  if (!templates.includes('## L0：第一次只用三项已有资产') || !appendix.includes('## L0：第一次先完成三项已有资产')) {
+    errors.push('模板入口与附录A：必须保留L0三项启动路径，避免首次使用者被全量模板淹没')
+  }
+
+  if (!start.includes('试点越做越乱') || !start.includes('先停止扩大和提高自主性')) {
+    errors.push('start.md：必须为失控试点提供停止扩大、回退人工和记录失败的入口')
+  }
+
+  if (!start.includes('## 本手册的能力圈：先判断应如何使用')) {
+    errors.push('start.md：必须保留可直接开始、探索性使用与需要专业介入的能力圈边界')
+  }
+
   const fourQuestionsPattern = /谁判断[\s\S]{0,40}依据什么[\s\S]{0,40}记录什么[\s\S]{0,40}缺什么就停止/
   if (!fourQuestionsPattern.test(chapterSix) || !fourQuestionsPattern.test(appendix)) {
     errors.push('第6章与附录A：关键控制点必须保留“谁判断、依据什么、记录什么、缺什么就停止”的可填写规则')
@@ -135,6 +161,18 @@ if (!errors.length) {
     errors.push('第11章：必须以单位任务、失败重试与人工接管审视规模经济性')
   }
 
+  if (!chapterEleven.includes('本期证据如何改变信心') || !chapterEleven.includes('先检查指标会奖励什么行为')) {
+    errors.push('第11章：必须说明证据如何更新判断，并防止指标和激励将团队推向错误行为')
+  }
+
+  if (!chapterEight.includes('加入机会成本与二阶效应，再作取舍') || !chapterEight.includes('可用的Owner、审核与回退能力决定并行数量')) {
+    errors.push('第8章：扩展排序必须保留机会成本、二阶影响与能力约束，不能依赖固定加权分或并行数量')
+  }
+
+  if (!chapterFourteen.includes('耦合与传播方式')) {
+    errors.push('第14章：依赖设计必须说明耦合升高时的传播风险、验证与回退要求')
+  }
+
   if (!chapterSeven.includes('员工可直接使用的暂停、拒绝与上报话术') || !chapterSeven.includes('任何人都可以暂停或转人工')) {
     errors.push('第7章：必须提供员工可直接使用的暂停、拒绝与上报话术，并明确暂停/转人工权利')
   }
@@ -145,6 +183,14 @@ if (!errors.length) {
 
   if (!chapterTwelve.includes('角色、决定权与替补：不能只写一个 Owner 名称') || !chapterTwelve.includes('AI Champion')) {
     errors.push('第12章：必须明确角色决定权、替补边界及 AI Champion 的非审批职责')
+  }
+
+  if (!chapterTwelve.includes('先检查激励没有把正确行为推走')) {
+    errors.push('第12章：必须检查激励是否错误奖励调用量、演示或扩大，并支持报告失败和正确暂停')
+  }
+
+  if (!appendix.includes('当前不优先的备选场景/非 AI 替代方案') || !appendix.includes('耦合与传播：')) {
+    errors.push('附录A用例立项卡：必须保留机会成本、二阶影响以及耦合/单点故障的最小记录')
   }
 
   if (!executiveSummary.includes('一个可调整的示例节奏') || !executiveSummary.includes('高管的反证追问') || !executiveSummary.includes('第 11 章的反证式决策卡')) {
