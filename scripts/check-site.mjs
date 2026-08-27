@@ -10,7 +10,7 @@ const normalizedBase = (() => {
   const trimmed = expectedBase.trim().replace(/^\/+|\/+$/g, '')
   return trimmed ? `/${trimmed}/` : '/'
 })()
-const requiredFiles = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'og-handbook.svg', 'og-handbook.png', 'handbook/preface.html', 'handbook/ai-strategy-and-alignment.html', 'templates.html', 'download.html', 'quickstart.html', 'executive-summary.html', 'learn/enterprise-ai/index.html', 'learn/ai-agent/index.html', 'learn/ai-reliability/index.html', 'about.html']
+const requiredFiles = ['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'og-handbook.svg', 'og-handbook.png', 'handbook/preface.html', 'handbook/ai-strategy-and-alignment.html', 'templates.html', 'lightweight-start.html', 'download.html', 'quickstart.html', 'executive-summary.html', 'learn/enterprise-ai/index.html', 'learn/ai-agent/index.html', 'learn/ai-reliability/index.html', 'about.html']
 const failures = []
 
 async function findHtmlFiles(directory, prefix = '') {
@@ -53,6 +53,7 @@ if (!sitemap.includes('https://handbook.sanage.xyz/handbook/preface')) failures.
 if (!sitemap.includes('https://handbook.sanage.xyz/handbook/ai-strategy-and-alignment')) failures.push('站点地图未包含战略章节。')
 if (!sitemap.includes('https://handbook.sanage.xyz/quickstart')) failures.push('站点地图未包含快速开始页面。')
 if (!sitemap.includes('https://handbook.sanage.xyz/executive-summary')) failures.push('站点地图未包含高管执行摘要页面。')
+if (!sitemap.includes('https://handbook.sanage.xyz/lightweight-start')) failures.push('站点地图未包含轻量启动页面。')
 if (!sitemap.includes('https://handbook.sanage.xyz/learn/enterprise-ai')) failures.push('站点地图未包含学习专题入口。')
 if (!sitemap.includes('https://handbook.sanage.xyz/about')) failures.push('站点地图未包含关于作者页面。')
 if (!robots.includes('https://handbook.sanage.xyz/sitemap.xml')) failures.push('robots.txt 未声明站点地图。')
