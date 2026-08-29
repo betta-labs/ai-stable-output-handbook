@@ -70,8 +70,10 @@ const p0Sources = {
   chapterEleven: path.join(ROOT, '11-第11章-价值评估与评测体系：如何算清AI的账.md'),
   chapterTwelve: path.join(ROOT, '12-第12章-治理与组织协同.md'),
   chapterFourteen: path.join(ROOT, '14-第14章-AI依赖与组织韧性.md'),
+  chapterFifteen: path.join(ROOT, '15-第15章-安全与合规.md'),
   chapterSixteen: path.join(ROOT, '16-第16章-完整案例集.md'),
   appendix: path.join(ROOT, '17-附录A-可直接复用的清单与模板.md'),
+  appendixD: path.join(ROOT, '20-附录D-资料出处与延伸阅读.md'),
   failureCasebook: path.join(ROOT, '23-附录G-AI-Failure-Casebook.md'),
   evidenceReadme: path.join(ROOT, 'evidence', 'README.md'),
   templates: path.join(ROOT, 'templates.md'),
@@ -86,7 +88,7 @@ for (const [label, source] of Object.entries(p0Sources)) {
 }
 
 if (!errors.length) {
-  const [readme, strategicOpening, start, quickstart, lightweightStart, executiveSummary, chapterTwo, chapterFour, chapterFive, chapterSix, chapterSeven, chapterEight, chapterNine, chapterEleven, chapterTwelve, chapterFourteen, chapterSixteen, appendix, failureCasebook, evidenceReadme, templates, roiGuide, decisionKernel, chapterResponsibilityMap, maintenanceCadence] = await Promise.all([
+  const [readme, strategicOpening, start, quickstart, lightweightStart, executiveSummary, chapterTwo, chapterFour, chapterFive, chapterSix, chapterSeven, chapterEight, chapterNine, chapterEleven, chapterTwelve, chapterFourteen, chapterFifteen, chapterSixteen, appendix, appendixD, failureCasebook, evidenceReadme, templates, roiGuide, decisionKernel, chapterResponsibilityMap, maintenanceCadence] = await Promise.all([
     readFile(p0Sources.readme, 'utf8'),
     readFile(p0Sources.strategicOpening, 'utf8'),
     readFile(p0Sources.start, 'utf8'),
@@ -103,8 +105,10 @@ if (!errors.length) {
     readFile(p0Sources.chapterEleven, 'utf8'),
     readFile(p0Sources.chapterTwelve, 'utf8'),
     readFile(p0Sources.chapterFourteen, 'utf8'),
+    readFile(p0Sources.chapterFifteen, 'utf8'),
     readFile(p0Sources.chapterSixteen, 'utf8'),
     readFile(p0Sources.appendix, 'utf8'),
+    readFile(p0Sources.appendixD, 'utf8'),
     readFile(p0Sources.failureCasebook, 'utf8'),
     readFile(p0Sources.evidenceReadme, 'utf8'),
     readFile(p0Sources.templates, 'utf8'),
@@ -136,6 +140,10 @@ if (!errors.length) {
 
   if (!chapterSix.includes('## 先看答案：首轮先留下三项产出') || !chapterSix.includes('会让试点越做越乱的五种做法')) {
     errors.push('第6章：必须在完整步骤前提供首轮三项产出与高影响反模式')
+  }
+
+  if (!chapterSix.includes('按后果选择监督方式') || !chapterSix.includes('协作式复核') || !chapterSix.includes('逐项审核') || !chapterSix.includes('例外升级或风险相称抽检')) {
+    errors.push('第6章：必须按后果、可恢复性与运行证据区分协作复核、逐项审核和例外升级，不能将人审写成单一动作')
   }
 
   if (!chapterFour.includes('## 先看答案：先选最小能力单元，不要追最高层级') || !chapterFour.includes('读完本章，你应能完成三件事') || !chapterFour.includes('何时先停下而不沉淀')) {
@@ -171,8 +179,18 @@ if (!errors.length) {
     errors.push('入口页面：必须保留将常见企业焦虑映射到既有章节的最小分流，且不重定义方法内核')
   }
 
+  if (!readme.includes('### 更短的入口：六类焦虑与轻量启动') || !readme.includes('[按六类焦虑分流](start.md)') || !readme.includes('[轻量启动](lightweight-start.md)')) {
+    errors.push('README.md：三入口后必须保留六类焦虑与轻量启动的短路径，且回到既有分流页面')
+  }
+
   if (!lightweightStart.includes('# 轻量启动：先跑出一个可判断的最小闭环') || !lightweightStart.includes('## 用三类证据，而不是一个漂亮数字') || !lightweightStart.includes('没有业务 Owner、允许输入、人工审核或回退方式时，不启动')) {
     errors.push('lightweight-start.md：轻量启动必须保留高频场景、三类证据与不跳过关键控制条件的边界')
+  }
+
+  const escalationSignals = ['对外发送', '系统写入', '多人复用', '效果主张']
+  const requiredL0Anchors = ['#asset-use-case-charter', '#asset-task-definition', '#asset-verification-checklist']
+  if (!lightweightStart.includes('### 出现这些条件时，补齐受控运行资产') || !escalationSignals.every((signal) => lightweightStart.includes(signal)) || !requiredL0Anchors.every((anchor) => lightweightStart.includes(anchor))) {
+    errors.push('lightweight-start.md：升级表必须覆盖对外、写入、多人复用、效果主张及L0三项资产的回归路径')
   }
 
   const fourQuestionsPattern = /谁判断[\s\S]{0,40}依据什么[\s\S]{0,40}记录什么[\s\S]{0,40}缺什么就停止/
@@ -213,6 +231,10 @@ if (!errors.length) {
     errors.push('第11章：必须说明证据如何更新判断，并防止指标和激励将团队推向错误行为')
   }
 
+  if (!chapterEleven.includes('可否定的业务结果或新能力假设') || !appendix.includes('什么可观察信号会否定上述业务结果/新能力假设')) {
+    errors.push('第11章与附录A：必须将业务结果或新能力表述为可否定假设，而非新增收益承诺或第四本账')
+  }
+
   if (!chapterEight.includes('加入机会成本与二阶效应，再作取舍') || !chapterEight.includes('可用的Owner、审核与回退能力决定并行数量')) {
     errors.push('第8章：扩展排序必须保留机会成本、二阶影响与能力约束，不能依赖固定加权分或并行数量')
   }
@@ -243,6 +265,14 @@ if (!errors.length) {
 
   if (!chapterTwelve.includes('角色、决定权与替补：不能只写一个 Owner 名称') || !chapterTwelve.includes('AI Champion')) {
     errors.push('第12章：必须明确角色决定权、替补边界及 AI Champion 的非审批职责')
+  }
+
+  if (!executiveSummary.includes('业务赞助人不是只签预算，而是在阶段中清障')) {
+    errors.push('高管执行摘要：必须将业务赞助人明确为阶段性清障者，而非只签预算或风险的人')
+  }
+
+  if (!chapterTwelve.includes('让支持部门共同给出可运行条件，而不是最后才“来审批”')) {
+    errors.push('第12章：必须为支持部门保留共同设计控制的入口，避免只将其描述为末端审批')
   }
 
   if (!chapterTwelve.includes('先检查激励没有把正确行为推走')) {
@@ -288,6 +318,17 @@ if (!errors.length) {
 
   if (!appendix.includes('## 55. 第二使用者复现与接棒验证记录模板')) {
     errors.push('17-附录A-可直接复用的清单与模板.md：缺少第二使用者复现与接棒验证记录模板')
+  }
+
+  const anonymousResearchCaseMarker = '外部案例观察（匿名报告样本）'
+  for (const [label, content] of [['第5章', chapterFive], ['第6章', chapterSix], ['第12章', chapterTwelve], ['第15章', chapterFifteen]]) {
+    if (!content.includes(anonymousResearchCaseMarker) || !content.includes('不可外推') || !content.includes('EnterpriseAIPlaybook_PereiraGraylinBrynjolfsson.pdf')) {
+      errors.push(`${label}：匿名报告观察案例必须保留来源、匿名报告标识和不可外推边界`)
+    }
+  }
+
+  if (!appendixD.includes('### 4. 匿名报告观察案例的使用边界') || !appendixD.includes('`RA-001`') || !appendixD.includes('成功案例选择与受访者自报限制')) {
+    errors.push('附录D：必须登记匿名报告观察案例的来源等级、可引用范围与成功样本边界')
   }
 
   for (const heading of ['## 二、月度轻量复核（30–60 分钟）', '## 三、季度深度复核（半天）', '## 四、发布质量门', '## 五、变更记录模板']) {
