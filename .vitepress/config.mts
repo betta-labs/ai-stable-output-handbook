@@ -100,8 +100,12 @@ const sidebar: DefaultTheme.Sidebar = {
     { text: '附录 D：来源与事实维护', link: '/appendices/sources-cases-and-fact-maintenance' }, { text: '附录 E：关于作者', link: '/appendices/about-the-author' },
     { text: '附录 F：术语表', link: '/appendices/glossary' }, { text: '附录 G：Failure Casebook', link: '/appendices/ai-failure-casebook' }
   ] }],
+  '/cases/': [{ text: '企业 AI 落地案例库', items: [
+    { text: '案例库首页', link: '/cases/' }, { text: '案例与证据阅读指南', link: '/cases/guide' }, { text: '案例写作模板', link: '/cases/template' },
+    { text: 'OpenAI 企业案例', link: '/cases/openai-enterprise' }, { text: 'Anthropic 企业案例', link: '/cases/anthropic-enterprise' }
+  ] }],
   '/evidence/': [{ text: '证据与案例', items: [
-    { text: '案例与证据说明', link: '/cases' }, { text: 'P2 试点证据包', link: '/evidence/pilot-evidence-pack' }, { text: '模型与工具事实卡登记册', link: '/facts/model-and-tool-fact-register' }
+    { text: '案例库首页', link: '/cases/' }, { text: '案例与证据阅读指南', link: '/cases/guide' }, { text: 'P2 试点证据包', link: '/evidence/pilot-evidence-pack' }, { text: '模型与工具事实卡登记册', link: '/facts/model-and-tool-fact-register' }
   ] }],
   '/facts/': [{ text: '动态事实', items: [
     { text: '模型与工具事实卡登记册', link: '/facts/model-and-tool-fact-register' }, { text: '来源与事实维护规范', link: '/appendices/sources-cases-and-fact-maintenance' }
@@ -254,7 +258,7 @@ export default defineConfig({
     siteTitle: '企业 AI 稳定产出手册',
     nav: [
       { text: '快速开始', link: '/quickstart' }, { text: '从问题开始', link: '/start' }, { text: '专题', link: '/learn/enterprise-ai', activeMatch: '^/learn/' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
-      { text: '模板', link: '/templates', activeMatch: '^/appendices/|^/templates' }, { text: '案例与证据', link: '/cases', activeMatch: '^/cases|^/evidence/|^/facts/' },
+      { text: '模板', link: '/templates', activeMatch: '^/appendices/|^/templates' }, { text: '案例与证据', link: '/cases/', activeMatch: '^/cases/|^/evidence/|^/facts/' },
       { text: '更新', link: '/updates' }, { text: '下载 PDF', link: '/download' }
     ],
     sidebar,

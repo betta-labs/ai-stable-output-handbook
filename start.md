@@ -64,4 +64,4 @@ editLink: false
 | 试点已经上线，但难以说明价值、质量或是否应该扩大。 | [第 8 章](/handbook/scale-use-cases-with-priority)、[第 11 章](/handbook/value-and-evaluation)、[第 12 章](/handbook/governance-and-organization) | 用例组合、评测和价值账本。 |
 | 团队担心依赖、故障、合规或“AI 失效后谁接手”。 | [第 14 章](/handbook/ai-dependency-and-resilience)、[第 15 章](/handbook/security-and-compliance)、[附录 G](/appendices/ai-failure-casebook) | Runbook、事件记录、回退与复盘资产。 |
 
-> 本手册中的公开案例、教学情景和受控运行证据有不同的外推边界。阅读案例前，请先查看[案例与证据说明](/cases)。如果你希望直接得到角色行动清单，请转到[角色化快速开始](/quickstart)，不要把本页当作另一套方法论。
+> 本手册中的公开案例、教学情景和受控运行证据有不同的外推边界。阅读案例前，请先查看[案例与证据阅读指南](/cases/guide)。如果你希望直接得到角色行动清单，请转到[角色化快速开始](/quickstart)，不要把本页当作另一套方法论。

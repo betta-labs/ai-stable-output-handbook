@@ -72,7 +72,7 @@ editLink: false
     <p class="archive-panel__label">04 / 证据边界</p>
     <h2>案例不是效果承诺。</h2>
     <p>公开案例、教学情景和受控运行证据采用不同标记与使用边界，避免把叙事误读为生产结论。</p>
-    <p><a href="./cases">查看案例与证据 →</a></p>
+    <p><a href="./cases/">查看案例库 →</a></p>
   </section>
 
   <section class="archive-panel archive-panel--wide">
