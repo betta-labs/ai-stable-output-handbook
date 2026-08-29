@@ -1,0 +1,98 @@
+# book.yaml — 全书结构清单（唯一事实源）
+# 哪些内容属于这本书、顺序如何，全部在此声明。
+# 新增文件不会自动进入书，必须在此显式加入。
+# build.sh 读取本文件，按顺序执行 Pandoc → Typst → PDF。
+
+title: 企业 AI 稳定产出手册
+version: v2.0.0
+author: Jace
+year: "2026"
+lang: zh-CN
+
+# 前置内容（封面之后、正文之前）
+frontmatter:
+  - src: 00-自序.md
+    out: 00-preface.typ
+  - src: 01-开篇-企业AI战略与业务对齐.md
+    out: 00-opening.typ
+
+# 正文：按 Part 分组
+parts:
+  - number: I
+    title: 认知与诊断
+    subtitle: 理解企业 AI 为什么难以稳定产出
+    chapters:
+      - src: 01-第1章-企业AI为什么难以稳定产出.md
+        out: chapter-01.typ
+      - src: 02-第2章-自诊断：定位你的真实问题.md
+        out: chapter-02.typ
+      - src: 03-第3章-认知校准：AI的真实能力边界.md
+        out: chapter-03.typ
+
+  - number: II
+    title: 从单次生成到可复现工作流
+    subtitle: 把个人技巧变成团队可重复的工作方法
+    chapters:
+      - src: 04-第4章-从单次生成到可复现工作流.md
+        out: chapter-04.typ
+      - src: 05-第5章-数据与知识：稳定产出的地基.md
+        out: chapter-05.typ
+      - src: 06-第6章-场景落地：最小闭环设计.md
+        out: chapter-06.typ
+
+  - number: III
+    title: 规模化与组织落地
+    subtitle: 从单一闭环到受控用例组合
+    chapters:
+      - src: 07-第7章-员工工作方法：人机协作的日常实践.md
+        out: chapter-07.typ
+      - src: 08-第8章-从1到N：多场景扩展与优先级管理.md
+        out: chapter-08.typ
+      - src: 09-第9章-Agent与自动化：决策框架与治理要点.md
+        out: chapter-09.typ
+      - src: 10-第10章-能力专题：RAG、微调与多模态的适用判断.md
+        out: chapter-10.typ
+
+  - number: IV
+    title: 价值、治理与韧性
+    subtitle: 用证据决策，用治理保障，用韧性应对变化
+    chapters:
+      - src: 11-第11章-价值评估与评测体系：如何算清AI的账.md
+        out: chapter-11.typ
+      - src: 12-第12章-治理与组织协同.md
+        out: chapter-12.typ
+      - src: 13-第13章-人机协同与组织生产方式.md
+        out: chapter-13.typ
+      - src: 14-第14章-AI依赖与组织韧性.md
+        out: chapter-14.typ
+      - src: 15-第15章-安全与合规.md
+        out: chapter-15.typ
+
+  - number: V
+    title: 实践案例
+    subtitle: 从案例中学习控制，而非制造效果幻觉
+    chapters:
+      - src: 16-第16章-完整案例集.md
+        out: chapter-16.typ
+
+# 后置内容
+backmatter:
+  - src: 16-后记-从个人提效到企业级稳定产出.md
+    out: 99-afterword.typ
+
+# 附录
+appendices:
+  - src: 17-附录A-可直接复用的清单与模板.md
+    out: appendix-a.typ
+  - src: 18-附录B-常用指标与评测方法.md
+    out: appendix-b.typ
+  - src: 19-附录C-工具与平台参考.md
+    out: appendix-c.typ
+  - src: 20-附录D-资料出处与延伸阅读.md
+    out: appendix-d.typ
+  - src: 21-附录E-关于作者与进一步交流.md
+    out: appendix-e.typ
+  - src: 22-附录F-术语表.md
+    out: appendix-f.typ
+  - src: 23-附录G-AI-Failure-Casebook.md
+    out: appendix-g.typ

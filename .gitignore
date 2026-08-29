@@ -5,3 +5,7 @@ node_modules/
 
 # Operating-system metadata
 .DS_Store
+
+# Typst / PDF 书籍构建产物
+book/generated/
+book/dist/
