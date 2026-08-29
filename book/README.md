@@ -1,3 +1,7 @@
+---
+description: 企业 AI 稳定产出手册印刷级 PDF 的构建说明，涵盖 Typst + Pandoc 组件系统、全书 manifest、后处理与一键构建流程。
+---
+
 # book/ — 印刷级 PDF 构建（Typst + Pandoc）
 
 > 一份内容真源、两个输出端：Markdown 既驱动 VitePress 网站，也驱动这本书。
