@@ -235,7 +235,7 @@ if (!errors.length) {
     errors.push('第11章与附录A：必须将业务结果或新能力表述为可否定假设，而非新增收益承诺或第四本账')
   }
 
-  if (!chapterEight.includes('加入机会成本与二阶效应，再作取舍') || !chapterEight.includes('可用的Owner、审核与回退能力决定并行数量')) {
+  if (!chapterEight.includes('加入机会成本与二阶效应，再作取舍') || !chapterEight.includes('可用的 Owner、审核与回退能力决定并行数量')) {
     errors.push('第8章：扩展排序必须保留机会成本、二阶影响与能力约束，不能依赖固定加权分或并行数量')
   }
 
