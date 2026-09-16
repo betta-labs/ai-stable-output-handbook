@@ -51,6 +51,28 @@ for (const file of files) {
     }
     if (!found) errors.push(`${path.relative(ROOT, file)} → ${rawTarget}`)
   }
+
+  // 表格列数一致性：表头/分隔行/数据行列数不一致时，渲染器会按普通文本输出整张表而不是表格。
+  const contentLines = content.split('\n')
+  let inFence = false
+  for (let i = 0; i < contentLines.length; i++) {
+    const line = contentLines[i]
+    if (line.trimStart().startsWith('```')) { inFence = !inFence; continue }
+    if (inFence) continue
+    const isRow = (l) => l.trimStart().startsWith('|') && l.trimEnd().endsWith('|')
+    if (!isRow(line)) continue
+    const columnsOf = (l) => l.trim().replace(/\\\|/g, '·').split('|').length - 2
+    const table = []
+    let j = i
+    for (; j < contentLines.length && isRow(contentLines[j]); j++) table.push({ line: j + 1, columns: columnsOf(contentLines[j]) })
+    if (table.length >= 2) {
+      const expected = table[0].columns
+      for (const row of table.slice(1)) {
+        if (row.columns !== expected) errors.push(`${path.relative(ROOT, file)} 第${row.line}行：表格列数（${row.columns}）与表头（${expected}）不一致，将无法渲染为表格`)
+      }
+    }
+    i = j - 1
+  }
 }
 
 const p0Sources = {
