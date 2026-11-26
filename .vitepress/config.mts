@@ -9,7 +9,7 @@ import { pageMeta, pageRoutes, routeForSource } from './page-meta'
 
 const SITE_URL = 'https://handbook.sanage.xyz'
 const REPOSITORY_URL = 'https://github.com/betta-labs/ai-stable-output-handbook'
-const DEFAULT_DESCRIPTION = '面向业务、交付、治理与培训的企业 AI 方法手册：从最小闭环到可复核、可维护、可接管的运行系统。'
+const DEFAULT_DESCRIPTION = '《企业 AI 落地实战手册》面向业务、交付、治理与工程团队，提供从最小闭环、上下文工程、Agent 治理、评测体系到合规回退的可复用方法与模板。'
 const requestedBase = process.env.VITEPRESS_BASE ?? '/'
 const BASE = (() => {
   const trimmed = requestedBase.trim().replace(/^\/+|\/+$/g, '')
@@ -33,8 +33,63 @@ for (const source of Object.keys(pageRoutes)) {
 const sourceByRewritten = new Map<string, string>()
 for (const [source, rewritten] of Object.entries(pageRoutes)) sourceByRewritten.set(rewritten, source)
 
+const handbookSidebar: DefaultTheme.SidebarItem[] = [
+  { text: '阅读入口', collapsed: false, items: [
+    { text: '从问题开始', link: '/start' },
+    { text: '轻量启动（小团队）', link: '/lightweight-start' },
+    { text: '角色化快速开始', link: '/quickstart' },
+    { text: '高管执行摘要', link: '/executive-summary' },
+    { text: '模板与 L0 资产', link: '/templates' },
+    { text: '自序', link: '/handbook/preface' }
+  ] },
+  { text: '第一部分：认知与诊断', collapsed: false, items: [
+    { text: '开篇：企业 AI 战略与业务对齐', link: '/handbook/ai-strategy-and-alignment' },
+    { text: '第 1 章：为什么难以稳定产出', link: '/handbook/why-ai-output-is-unstable' },
+    { text: '第 2 章：自诊断', link: '/handbook/diagnose-your-constraint' },
+    { text: '第 3 章：认知校准', link: '/handbook/calibrate-ai-capabilities' }
+  ] },
+  { text: '第二部分：方法与基础', collapsed: true, items: [
+    { text: '第 4 章：可复现工作流', link: '/handbook/from-generation-to-reproducible-workflows' },
+    { text: '第 5 章：数据、知识与上下文', link: '/handbook/data-knowledge-and-context' }
+  ] },
+  { text: '第三部分：执行与落地', collapsed: true, items: [
+    { text: '第 6 章：最小闭环设计', link: '/handbook/design-a-minimum-closed-loop' },
+    { text: '第 7 章：日常人机协作', link: '/handbook/daily-human-ai-collaboration' },
+    { text: '第 8 章：扩展与优先级', link: '/handbook/scale-use-cases-with-priority' }
+  ] },
+  { text: '第四部分：进阶决策', collapsed: true, items: [
+    { text: '第 9 章：Agent 与自动化治理', link: '/handbook/agent-and-automation-governance' },
+    { text: '第 10 章：RAG、微调与多模态', link: '/handbook/rag-finetuning-and-multimodal' }
+  ] },
+  { text: '第五部分：度量与治理', collapsed: true, items: [
+    { text: '第 11 章：价值与评测', link: '/handbook/value-and-evaluation' },
+    { text: '第 12 章：治理与组织协同', link: '/handbook/governance-and-organization' },
+    { text: '第 13 章：人机协同与组织生产', link: '/handbook/human-ai-collaboration-and-work' },
+    { text: '第 14 章：依赖与韧性', link: '/handbook/ai-dependency-and-resilience' },
+    { text: '第 15 章：安全与合规', link: '/handbook/security-and-compliance' }
+  ] },
+  { text: '第六部分：案例与收束', collapsed: true, items: [
+    { text: '第 16 章：公开案例与教学情景', link: '/handbook/public-cases-and-teaching-scenarios' },
+    { text: '后记：从个人提效到企业级稳定产出', link: '/handbook/afterword' }
+  ] },
+  { text: '附录与方法资产', collapsed: true, items: [
+    { text: '模板总览', link: '/templates' },
+    { text: '附录 A：清单与模板', link: '/appendices/reusable-checklists-and-templates' },
+    { text: '附录 B：指标与评测', link: '/appendices/metrics-and-evaluation' },
+    { text: '附录 C：工具与平台参考', link: '/appendices/tools-and-platforms' },
+    { text: '附录 D：来源与事实维护', link: '/appendices/sources-cases-and-fact-maintenance' },
+    { text: '附录 E：关于作者', link: '/appendices/about-the-author' },
+    { text: '附录 F：术语表', link: '/appendices/glossary' },
+    { text: '附录 G：Failure Casebook', link: '/appendices/ai-failure-casebook' }
+  ] }
+]
+
 const sidebar: DefaultTheme.Sidebar = {
   '/learn/': [
+    { text: '返回主手册', items: [
+      { text: '《企业 AI 落地实战手册》首页', link: '/' },
+      { text: '完整目录与正文', link: '/handbook/preface' }
+    ] },
     { text: '专题入口', items: [
       { text: '企业 AI 落地指南', link: '/learn/enterprise-ai' },
       { text: '企业 AI Agent 落地指南', link: '/learn/ai-agent' },
@@ -55,55 +110,27 @@ const sidebar: DefaultTheme.Sidebar = {
       { text: 'AI 效果怎么评测', link: '/learn/ai-reliability/evaluation' }
     ] }
   ],
-  '/handbook/': [
-    { text: '阅读入口', items: [
-      { text: '高管执行摘要', link: '/executive-summary' },
-      { text: '角色化快速开始', link: '/quickstart' },
-      { text: '先定位你的问题', link: '/start' },
-      { text: '开篇：企业 AI 战略与业务对齐', link: '/handbook/ai-strategy-and-alignment' },
-      { text: '自序', link: '/handbook/preface' }
+  '/handbook/': handbookSidebar,
+  '/appendices/': handbookSidebar,
+  '/start': handbookSidebar,
+  '/quickstart': handbookSidebar,
+  '/lightweight-start': handbookSidebar,
+  '/executive-summary': handbookSidebar,
+  '/templates': handbookSidebar,
+  '/download': handbookSidebar,
+  '/updates': handbookSidebar,
+  '/about': handbookSidebar,
+  '/cases/': [
+    { text: '企业 AI 落地案例库', items: [
+      { text: '案例库首页', link: '/cases/' }, { text: '案例与证据阅读指南', link: '/cases/guide' }, { text: '案例写作模板', link: '/cases/template' },
+      { text: 'OpenAI 企业案例', link: '/cases/openai-enterprise' }, { text: 'Anthropic 企业实践', link: '/cases/anthropic-enterprise' }
     ] },
-    { text: '第一部分：认知与诊断', collapsed: false, items: [
-      { text: '开篇：企业 AI 战略与业务对齐', link: '/handbook/ai-strategy-and-alignment' },
-      { text: '第 1 章：为什么难以稳定产出', link: '/handbook/why-ai-output-is-unstable' },
-      { text: '第 2 章：自诊断', link: '/handbook/diagnose-your-constraint' },
-      { text: '第 3 章：认知校准', link: '/handbook/calibrate-ai-capabilities' }
-    ] },
-    { text: '第二部分：方法与基础', items: [
-      { text: '第 4 章：可复现工作流', link: '/handbook/from-generation-to-reproducible-workflows' },
-      { text: '第 5 章：数据、知识与上下文', link: '/handbook/data-knowledge-and-context' }
-    ] },
-    { text: '第三部分：执行与落地', items: [
-      { text: '第 6 章：最小闭环设计', link: '/handbook/design-a-minimum-closed-loop' },
-      { text: '第 7 章：日常人机协作', link: '/handbook/daily-human-ai-collaboration' },
-      { text: '第 8 章：扩展与优先级', link: '/handbook/scale-use-cases-with-priority' }
-    ] },
-    { text: '第四部分：进阶决策', items: [
-      { text: '第 9 章：Agent 与自动化治理', link: '/handbook/agent-and-automation-governance' },
-      { text: '第 10 章：RAG、微调与多模态', link: '/handbook/rag-finetuning-and-multimodal' }
-    ] },
-    { text: '第五部分：度量与治理', items: [
-      { text: '第 11 章：价值与评测', link: '/handbook/value-and-evaluation' },
-      { text: '第 12 章：治理与组织协同', link: '/handbook/governance-and-organization' },
-      { text: '第 13 章：人机协同与组织生产', link: '/handbook/human-ai-collaboration-and-work' },
-      { text: '第 14 章：依赖与韧性', link: '/handbook/ai-dependency-and-resilience' },
-      { text: '第 15 章：安全与合规', link: '/handbook/security-and-compliance' }
-    ] },
-    { text: '第六部分：案例与收束', items: [
-      { text: '第 16 章：公开案例与教学情景', link: '/handbook/public-cases-and-teaching-scenarios' },
-      { text: '后记：从个人提效到企业级稳定产出', link: '/handbook/afterword' }
+    { text: '关联资产', items: [
+      { text: '第 16 章：完整案例集', link: '/handbook/public-cases-and-teaching-scenarios' },
+      { text: 'P2 试点证据包', link: '/evidence/pilot-evidence-pack' },
+      { text: '模型与工具事实卡登记册', link: '/facts/model-and-tool-fact-register' }
     ] }
   ],
-  '/appendices/': [{ text: '附录与方法资产', items: [
-    { text: '模板总览', link: '/templates' }, { text: '附录 A：清单与模板', link: '/appendices/reusable-checklists-and-templates' },
-    { text: '附录 B：指标与评测', link: '/appendices/metrics-and-evaluation' }, { text: '附录 C：工具与平台参考', link: '/appendices/tools-and-platforms' },
-    { text: '附录 D：来源与事实维护', link: '/appendices/sources-cases-and-fact-maintenance' }, { text: '附录 E：关于作者', link: '/appendices/about-the-author' },
-    { text: '附录 F：术语表', link: '/appendices/glossary' }, { text: '附录 G：Failure Casebook', link: '/appendices/ai-failure-casebook' }
-  ] }],
-  '/cases/': [{ text: '企业 AI 落地案例库', items: [
-    { text: '案例库首页', link: '/cases/' }, { text: '案例与证据阅读指南', link: '/cases/guide' }, { text: '案例写作模板', link: '/cases/template' },
-    { text: 'OpenAI 企业案例', link: '/cases/openai-enterprise' }, { text: 'Anthropic 企业案例', link: '/cases/anthropic-enterprise' }
-  ] }],
   '/evidence/': [{ text: '证据与案例', items: [
     { text: '案例库首页', link: '/cases/' }, { text: '案例与证据阅读指南', link: '/cases/guide' }, { text: 'P2 试点证据包', link: '/evidence/pilot-evidence-pack' }, { text: '模型与工具事实卡登记册', link: '/facts/model-and-tool-fact-register' }
   ] }],
@@ -116,10 +143,67 @@ function sourceForPage(page: string): string {
   return Object.entries(pageRoutes).find(([, route]) => route === page)?.[0] ?? page
 }
 
+const learnFaqAnswers: Record<string, { q: string; a: string }> = {
+  'learn/enterprise-ai/implementation.md': {
+    q: '企业 AI 怎么落地？',
+    a: '企业 AI 落地建议按五步推进：定位问题（30 分钟自诊断）、选择边界清楚的高频场景、设计可验证可回退的最小闭环、用全成本与实际采用率验证价值，以及建立版本、Owner 与组合评审机制持续治理。'
+  },
+  'learn/enterprise-ai/minimum-closed-loop.md': {
+    q: '企业 AI 最小闭环怎么设计？',
+    a: '最小闭环是在一个有边界的场景里，用最短周期验证用例是否值得做、是否可控、是否可持续运行。它要求范围最小，但必须包含业务 Owner、任务定义、最小上下文包、验证清单、人工审核与回退路径。'
+  },
+  'learn/enterprise-ai/roi.md': {
+    q: '企业 AI ROI 怎么算才不算“假账”？',
+    a: '先用损失账、代替账和验收账对齐管理层问题，再区分全成本 TCO（含人工验证、错误修复与上下文运维）、已实现财务收益和容量价值代理；不能直接把“节省小时数 × 时薪”当作已实现财务 ROI。'
+  },
+  'learn/ai-agent/governance.md': {
+    q: '企业 AI Agent 如何治理？',
+    a: 'AI Agent 治理不是事后审核，而是通过 Agent 运行合约、只读优先的最小权限、上下文来源白名单、状态机与预算熔断、以及可验证的人工接管，把边界变成可执行控制面。'
+  },
+  'learn/ai-agent/workflow-vs-agent.md': {
+    q: 'AI Agent 和 AI 工作流有什么区别？什么时候才需要 Agent？',
+    a: '固定 AI 工作流由设计者预先定义步骤，Agent 由模型根据中间结果在受限范围内动态选择下一步。大多数企业场景固定工作流即可胜任；只有步骤无法写死、Skill 已稳定且治理条件齐备时才评估 Agent。'
+  },
+  'learn/ai-reliability/output-quality.md': {
+    q: 'AI 输出不稳定怎么办？',
+    a: '不要先急着换模型或盲目堆提示词。应按“任务定义 → 数据/知识 → 工作流 → 治理评测”四层逐层检查，大多数输出波动的根因在任务边界模糊与知识过期，而非模型能力不足。'
+  },
+  'learn/ai-reliability/knowledge-base.md': {
+    q: '企业 AI 知识库怎么建设？为什么把文档全丢进 RAG 不够？',
+    a: '企业 AI 知识库稳定产出的前提是知识治理（Owner、版本、来源和生效范围），而不是检索技术本身。应先构建按任务裁剪的最小上下文包，再按需求决定是否引入受控 RAG。'
+  },
+  'learn/ai-reliability/evaluation.md': {
+    q: 'AI 效果怎么评测？',
+    a: 'AI 评测分三级：先用验证清单与 Rubric 定义“什么是好”，再测量一次通过率、端到端耗时与失败分布，最后区分“通过检查”和“实际采用率/业务结果”，对 Agent 还需评测轨迹与接管指标。'
+  }
+}
+
+function buildBreadcrumb(source: string, title: string, canonicalUrl: string) {
+  const items = [{ '@type': 'ListItem', position: 1, name: '首页', item: SITE_URL }]
+  if (canonicalUrl === `${SITE_URL}/`) return items
+  const route = routeForSource(source)
+  if (route.startsWith('/handbook/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: '手册正文', item: `${SITE_URL}/handbook/preface` })
+  } else if (route.startsWith('/appendices/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: '附录与模板', item: `${SITE_URL}/templates` })
+  } else if (route.startsWith('/learn/enterprise-ai/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: '企业 AI 落地指南', item: `${SITE_URL}/learn/enterprise-ai/` })
+  } else if (route.startsWith('/learn/ai-agent/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: '企业 AI Agent 落地指南', item: `${SITE_URL}/learn/ai-agent/` })
+  } else if (route.startsWith('/learn/ai-reliability/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: 'AI 输出质量与稳定产出指南', item: `${SITE_URL}/learn/ai-reliability/` })
+  } else if (route.startsWith('/cases/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: '企业 AI 落地案例库', item: `${SITE_URL}/cases/` })
+  }
+  items.push({ '@type': 'ListItem', position: items.length + 1, name: title, item: canonicalUrl })
+  return items
+}
+
 export default defineConfig({
   lang: 'zh-Hans',
   title: '企业 AI 落地实战手册',
-  titleTemplate: false,
+  titleTemplate: ':title｜企业 AI 落地实战手册',
+  appearance: false,
   base: BASE,
   cleanUrls: true,
   lastUpdated: true,
@@ -171,12 +255,13 @@ export default defineConfig({
     const canonicalUrl = source.endsWith('/index.md') && !canonical.endsWith('/') ? `${canonical}/` : canonical
     const isHome = canonicalUrl === `${SITE_URL}/`
     const isAbout = canonicalUrl === `${SITE_URL}/about`
-    const title = isHome ? '企业 AI 落地实战手册' : meta?.title ?? context.title
+    const rawTitle = isHome ? '企业 AI 落地实战手册' : meta?.title ?? context.title
+    const title = isHome ? rawTitle : rawTitle.replace(/｜企业 AI 落地实战手册$/, '')
     const description = meta?.description ?? context.description ?? DEFAULT_DESCRIPTION
     const lastUpdated = context.pageData.lastUpdated ? new Date(context.pageData.lastUpdated).toISOString() : undefined
     const publishedAt = '2026-08-21T00:00:00+08:00'
-    const breadcrumb = [{ '@type': 'ListItem', position: 1, name: '首页', item: SITE_URL }]
-    if (!isHome) breadcrumb.push({ '@type': 'ListItem', position: 2, name: title, item: canonical })
+    const breadcrumb = buildBreadcrumb(source, title, canonicalUrl)
+    const faqEntry = learnFaqAnswers[source]
     const schema = isHome
       ? { '@context': 'https://schema.org', '@graph': [
         { '@type': 'WebSite', name: '企业 AI 落地实战手册', url: SITE_URL, inLanguage: 'zh-Hans', description: DEFAULT_DESCRIPTION, publisher: PUBLISHER },
@@ -184,11 +269,15 @@ export default defineConfig({
       ] }
       : isAbout
         ? { '@context': 'https://schema.org', '@graph': [
-          { '@type': 'ProfilePage', name: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntity: { '@type': 'Person', name: 'Jace', url: canonicalUrl, description, email: 'jacejacejia@gmail.com', knowsAbout: ['企业 AI 落地', 'AI Agent 治理', 'AI 评测', 'AI 工作流', 'AI 稳定产出'], sameAs: REPOSITORY_URL } },
+          { '@type': 'ProfilePage', name: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntity: { '@type': 'Person', name: 'Jace', url: canonicalUrl, description, email: 'jacejacejia@gmail.com', knowsAbout: ['企业 AI 落地', 'AI Agent 治理', 'AI 评测', 'AI 工作流', '上下文工程'], sameAs: REPOSITORY_URL } },
           { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
         ] }
         : { '@context': 'https://schema.org', '@graph': [
           { '@type': 'Article', headline: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl }, image: OG_IMAGE, datePublished: publishedAt, ...(lastUpdated ? { dateModified: lastUpdated } : {}), author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, isPartOf: { '@type': 'Book', name: '企业 AI 落地实战手册', url: SITE_URL } },
+          ...(faqEntry ? [{
+            '@type': 'FAQPage',
+            mainEntity: [{ '@type': 'Question', name: faqEntry.q, acceptedAnswer: { '@type': 'Answer', text: faqEntry.a } }]
+          }] : []),
           { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
         ] }
     return [

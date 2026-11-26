@@ -43,51 +43,150 @@ editLink: false
   <div class="archive-signal"><strong>可接管</strong><span>当 AI、连接器或流程失效时，团队知道谁来判断、如何回退、怎样恢复。</span></div>
 </div>
 
-<div class="archive-grid">
-  <section class="archive-panel archive-panel--wide">
-    <p class="archive-panel__label">01 / 先对上你此刻的焦虑</p>
-    <h2>不要先选工具。先把一句“卡住了”翻译成正确的下一步。</h2>
-    <p>目标不清，先做战略与自诊断；员工不动，先看工作方式与组织协同；账算不清，先进入 ROI 的正式口径；Demo 进生产翻车，先回到最小闭环；缺人推进，先补齐职责组合；团队小、人少，则先走轻量启动。</p>
-    <p><a href="./start">按六类焦虑分流 →</a> · <a href="./lightweight-start">人少预算有限：轻量启动 →</a> · <a href="./quickstart">按角色行动 →</a></p>
-  </section>
-</div>
+<section class="archive-section" aria-label="按当前问题分流">
+  <div class="archive-section__header">
+    <div>
+      <p class="archive-panel__label">01 / 按当前卡点直接进入</p>
+      <h2 class="archive-section__title">不要先选工具，先对上你此刻的问题</h2>
+    </div>
+    <a class="archive-section__more" href="./start">完整问题分流 →</a>
+  </div>
+  <div class="archive-anxiety-grid">
+    <a class="archive-anxiety-card" href="./handbook/ai-strategy-and-alignment">
+      <p class="archive-anxiety-card__quote">“老板要求上 AI，但目标和优先级说不清。”</p>
+      <p class="archive-anxiety-card__route">开篇：战略与业务对齐 → 第 2 章自诊断</p>
+    </a>
+    <a class="archive-anxiety-card" href="./handbook/daily-human-ai-collaboration">
+      <p class="archive-anxiety-card__quote">“员工不太用，中层也推不动。”</p>
+      <p class="archive-anxiety-card__route">第 7 章员工协作 → 第 12 章组织协同</p>
+    </a>
+    <a class="archive-anxiety-card" href="./learn/enterprise-ai/roi">
+      <p class="archive-anxiety-card__quote">“CFO 算不清账，想先否决投入。”</p>
+      <p class="archive-anxiety-card__route">ROI 三笔账专题 → 第 11 章价值与评测</p>
+    </a>
+    <a class="archive-anxiety-card" href="./handbook/design-a-minimum-closed-loop">
+      <p class="archive-anxiety-card__quote">“Demo 很惊艳，真进工作流就翻车。”</p>
+      <p class="archive-anxiety-card__route">第 6 章最小闭环 → 附录 G 失败案例集</p>
+    </a>
+    <a class="archive-anxiety-card" href="./quickstart">
+      <p class="archive-anxiety-card__quote">“没人会推，是不是要先招 AI 架构师？”</p>
+      <p class="archive-anxiety-card__route">角色化快速开始 → 第 12 章职责组合</p>
+    </a>
+    <a class="archive-anxiety-card" href="./lightweight-start">
+      <p class="archive-anxiety-card__quote">“团队小、预算有限，不知道从哪起步。”</p>
+      <p class="archive-anxiety-card__route">轻量启动路径 → L0 三项最小资产</p>
+    </a>
+  </div>
+</section>
 
-<div class="archive-grid">
-  <section class="archive-panel archive-panel--wide">
-    <p class="archive-panel__label">02 / 从约束开始</p>
-    <h2>先分清：你是在做组织取舍，还是在解决一条具体工作流。</h2>
-    <p>组织级问题先处理为什么做、做什么和不做什么；单个团队或工作流的问题再从自诊断开始，按任务定义、知识、责任与验证定位真实约束。</p>
-    <p>不知道卡在哪，走“按问题”；知道自己承担什么角色，走“按角色”；只想研究一个主题，走“专题学习”。三种入口回答不同问题，不必全部走完。</p>
-    <p><a href="./start">按问题进入 →</a> · <a href="./quickstart">按角色行动 →</a> · <a href="./learn/enterprise-ai/">按主题学习 →</a></p>
-  </section>
+<section class="archive-section" aria-label="全书六部分全景地图">
+  <div class="archive-section__header">
+    <div>
+      <p class="archive-panel__label">02 / 全书六部分全景地图（16 章 + 7 附录）</p>
+      <h2 class="archive-section__title">从业务诊断、上下文底座到 Agent 治理与合规</h2>
+    </div>
+    <a class="archive-section__more" href="./handbook/preface">从自序顺序阅读 →</a>
+  </div>
+  <div class="archive-roadmap">
+    <div class="archive-part">
+      <p class="archive-part__tag">PART I · 认知与诊断</p>
+      <h3>定位真实约束</h3>
+      <ul>
+        <li><a href="./handbook/ai-strategy-and-alignment">开篇：企业 AI 战略与业务对齐</a></li>
+        <li><a href="./handbook/why-ai-output-is-unstable">第 1 章：为什么难以稳定产出</a></li>
+        <li><a href="./handbook/diagnose-your-constraint">第 2 章：自诊断（含底座阻塞检查）</a></li>
+        <li><a href="./handbook/calibrate-ai-capabilities">第 3 章：认知校准与推理模型路由</a></li>
+      </ul>
+    </div>
+    <div class="archive-part">
+      <p class="archive-part__tag">PART II · 方法与基础</p>
+      <h3>固化可复现底座</h3>
+      <ul>
+        <li><a href="./handbook/from-generation-to-reproducible-workflows">第 4 章：Prompt / Skill / 受限解码工作流</a></li>
+        <li><a href="./handbook/data-knowledge-and-context">第 5 章：数据、知识与上下文工程</a></li>
+      </ul>
+    </div>
+    <div class="archive-part">
+      <p class="archive-part__tag">PART III · 执行与落地</p>
+      <h3>跑通并扩展闭环</h3>
+      <ul>
+        <li><a href="./handbook/design-a-minimum-closed-loop">第 6 章：最小闭环与探索/运行双轨</a></li>
+        <li><a href="./handbook/daily-human-ai-collaboration">第 7 章：员工工作方法与暂停话术</a></li>
+        <li><a href="./handbook/scale-use-cases-with-priority">第 8 章：从 1 到 N 与共享基建判断</a></li>
+      </ul>
+    </div>
+    <div class="archive-part">
+      <p class="archive-part__tag">PART IV · 进阶决策</p>
+      <h3>控制自主性与复杂度</h3>
+      <ul>
+        <li><a href="./handbook/agent-and-automation-governance">第 9 章：Agent 决策框架与幂等治理</a></li>
+        <li><a href="./handbook/rag-finetuning-and-multimodal">第 10 章：RAG、记忆、微调与多模态</a></li>
+      </ul>
+    </div>
+    <div class="archive-part">
+      <p class="archive-part__tag">PART V · 度量与治理</p>
+      <h3>价值、韧性与合规</h3>
+      <ul>
+        <li><a href="./handbook/value-and-evaluation">第 11 章：ROI 核算、Judge 校准与评测</a></li>
+        <li><a href="./handbook/governance-and-organization">第 12 章：组织协同与 FDE 接棒交付</a></li>
+        <li><a href="./handbook/human-ai-collaboration-and-work">第 13 章：人机协同与目标契约</a></li>
+        <li><a href="./handbook/ai-dependency-and-resilience">第 14 章：AI 依赖、Runbook 与恢复演练</a></li>
+        <li><a href="./handbook/security-and-compliance">第 15 章：安全边界与中美欧合规</a></li>
+      </ul>
+    </div>
+    <div class="archive-part">
+      <p class="archive-part__tag">PART VI · 案例与附录资产</p>
+      <h3>控制拆解与模板库</h3>
+      <ul>
+        <li><a href="./handbook/public-cases-and-teaching-scenarios">第 16 章：公开案例与 6 类教学情景</a></li>
+        <li><a href="./appendices/reusable-checklists-and-templates">附录 A：L0 套件、55 节模板与 JSON Schema</a></li>
+        <li><a href="./appendices/metrics-and-evaluation">附录 B–C：指标口径与工具核验</a></li>
+        <li><a href="./appendices/ai-failure-casebook">附录 D–G：来源登记、术语与失败库</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <section class="archive-panel archive-panel--narrow">
-    <p class="archive-panel__label">03 / 可直接取用</p>
-    <h2>把方法变成可复用资产。</h2>
-    <p>最小闭环、上下文包、记忆合约、工具控制卡、目标契约、Runbook 与评测模板已收录在附录，可直接用于试点设计。</p>
-    <p><a href="./templates">浏览模板 →</a></p>
-  </section>
-
-  <section class="archive-panel archive-panel--narrow">
-    <p class="archive-panel__label">04 / 证据边界</p>
-    <h2>案例不是效果承诺。</h2>
-    <p>公开案例、教学情景和受控运行证据采用不同标记与使用边界，避免把叙事误读为生产结论。</p>
-    <p><a href="./cases/">查看案例库 →</a></p>
-  </section>
-
-  <section class="archive-panel archive-panel--wide">
-    <p class="archive-panel__label">05 / 版本与协作</p>
-    <h2>阅读层服务理解；GitHub 保持事实真源。</h2>
-    <p>本网站由仓库 Markdown 构建。版本、来源、事实卡、PDF、许可证与可复核反馈均以 GitHub 仓库为准。</p>
-    <p><a href="./updates">阅读 v2.1.0 更新说明 →</a></p>
-  </section>
-</div>
-
-<div class="archive-grid">
-  <section class="archive-panel archive-panel--wide">
-    <p class="archive-panel__label">06 / 专题学习</p>
-    <h2>按问题进入专题，而不是按章节阅读。</h2>
-    <p>专题页直接回答企业 AI 落地、Agent 治理与输出质量评测中的高频问题，并链接到手册章节、模板与证据资产。</p>
-    <p><a href="./learn/enterprise-ai/">企业 AI 落地指南 →</a> · <a href="./learn/ai-agent/">企业 AI Agent 落地指南 →</a> · <a href="./learn/ai-reliability/">AI 输出质量与稳定产出指南 →</a></p>
-  </section>
-</div>
+<section class="archive-section" aria-label="核心资产与专题入口">
+  <div class="archive-section__header">
+    <div>
+      <p class="archive-panel__label">03 / 工具资产、案例证据与专题快查</p>
+      <h2 class="archive-section__title">直接取用模板，或按问题领域快速检索</h2>
+    </div>
+    <a class="archive-section__more" href="./executive-summary">高管 15 分钟执行摘要 →</a>
+  </div>
+  <div class="archive-utility-grid">
+    <div class="archive-utility-card">
+      <div>
+        <p class="archive-panel__label">TEMPLATES & L0</p>
+        <h3>模板与机器可读契约</h3>
+        <p>先取 L0 三项立项、任务定义与验证清单，再按阶段与风险按需补齐 YAML Skill 与 JSONL 评测集。</p>
+      </div>
+      <a href="./templates">浏览模板地图 →</a>
+    </div>
+    <div class="archive-utility-card">
+      <div>
+        <p class="archive-panel__label">CASES & FACTS</p>
+        <h3>案例库与动态事实卡</h3>
+        <p>严格区分公开案例边界、P2 待验证证据包，以及模型/API/MCP Server 安全事实卡。</p>
+      </div>
+      <a href="./cases/">查看案例与事实 →</a>
+    </div>
+    <div class="archive-utility-card">
+      <div>
+        <p class="archive-panel__label">TOPIC GUIDES</p>
+        <h3>三大专题速查入口</h3>
+        <p>聚焦企业 AI 落地五步法、Agent 治理与工作流对比、知识库与输出质量四层排障。</p>
+      </div>
+      <a href="./learn/enterprise-ai/">进入专题学习 →</a>
+    </div>
+    <div class="archive-utility-card">
+      <div>
+        <p class="archive-panel__label">VERSION 2.1.0</p>
+        <h3>版本更新与真源协作</h3>
+        <p>网站提供结构化阅读与搜索；GitHub 仓库保持版本、来源登记、事实卡与 PDF 构建真源。</p>
+      </div>
+      <a href="./updates">阅读 v2.1.0 更新 →</a>
+    </div>
+  </div>
+</section>

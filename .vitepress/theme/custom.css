@@ -1,11 +1,12 @@
 /*
  * 运行手册档案馆：证据优先、任务导向、克制层级、可操作性。
  * 暖白纸张、石墨正文、运行墨绿与少量朱红风险色；避免泛科技渐变和营销式圆角卡片。
+ * 优先本地系统字体栈，避免跨国 CDN 在中国大陆网络下阻塞首屏渲染。
  */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
 
 :root {
-  --vp-font-family-base: 'IBM Plex Sans', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --vp-font-family-base: 'IBM Plex Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --vp-font-family-serif: 'Noto Serif SC', 'Songti SC', 'STSong', 'Source Han Serif SC', Georgia, serif;
   --vp-c-brand-1: #164e45;
   --vp-c-brand-2: #0f3d36;
   --vp-c-brand-3: #216557;
@@ -45,16 +46,16 @@ body {
 .VPNavBarTitle .title { font-size: 0.86rem; font-weight: 700; letter-spacing: 0.03em; }
 .VPNavBarTitle .logo { width: 28px; height: 28px; }
 .VPDoc .content-container, .VPDoc.has-aside .content-container { max-width: 760px; }
-.VPDoc h1, .VPDoc h2, .VPDoc h3, .VPDoc h4 { color: #16211d; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; letter-spacing: -0.02em; }
+.VPDoc h1, .VPDoc h2, .VPDoc h3, .VPDoc h4 { color: #16211d; font-family: var(--vp-font-family-base); letter-spacing: -0.02em; }
 .VPDoc h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.18; border-bottom: 3px solid #164e45; padding-bottom: 1.25rem; }
 .VPDoc h2 { margin-top: 3.4rem; padding-top: 0.55rem; border-top: 1px solid var(--vp-c-divider); }
-.VPDoc p, .VPDoc li { font-family: 'Noto Serif SC', 'Songti SC', serif; font-size: 1rem; line-height: 1.95; }
+.VPDoc p, .VPDoc li { font-family: var(--vp-font-family-serif); font-size: 1rem; line-height: 1.95; }
 .VPDoc blockquote { border-left: 3px solid #b7422d; color: #4f4038; background: rgba(183, 66, 45, 0.055); border-radius: 0; }
 .VPDoc table { display: table; width: 100%; border-collapse: collapse; border: 1px solid var(--vp-c-divider); }
 .VPDoc tr:nth-child(2n) { background: rgba(22, 78, 69, 0.035); }
 .VPDoc th, .VPDoc td { border: 1px solid var(--vp-c-divider); }
-.VPDoc th { font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; color: #164e45; background: #e8f1ec; }
-.VPButton { border-radius: 2px !important; font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-weight: 700; letter-spacing: 0.02em; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); }
+.VPDoc th { font-family: var(--vp-font-family-base); color: #164e45; background: #e8f1ec; }
+.VPButton { border-radius: 2px !important; font-family: var(--vp-font-family-base); font-weight: 700; letter-spacing: 0.02em; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 160ms cubic-bezier(0.23, 1, 0.32, 1); }
 .VPButton:active { transform: scale(0.97); }
 .handbook-home .VPDoc { padding-top: 0; }
 .handbook-home .content-container { max-width: none !important; }
@@ -80,8 +81,42 @@ body {
 .archive-panel h2 { margin: 0.65rem 0 0; padding: 0; border: 0; font-size: 1.55rem; }
 .archive-panel p { margin: 0.85rem 0 0; }
 .archive-panel ul { margin: 1rem 0 0; padding-left: 1.2rem; }
-.archive-panel a { font-family: 'IBM Plex Sans', 'Noto Sans SC', sans-serif; font-weight: 700; }
+.archive-panel a { font-family: var(--vp-font-family-base); font-weight: 700; }
+
+/* 首页分块容器与六大焦虑 / 六分部全景地图 / 核心资产入口 */
+.archive-section { width: min(calc(100% - clamp(2rem, 5vw, 5rem)), 1260px); margin: 0 auto 3.75rem; }
+.archive-section__header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.75rem; margin-bottom: 1.15rem; border-bottom: 1px solid var(--vp-c-divider); padding-bottom: 0.75rem; }
+.archive-section__title { margin: 0.35rem 0 0 !important; padding: 0 !important; border: 0 !important; font-size: 1.45rem !important; font-family: var(--vp-font-family-base); color: #16211d; }
+.archive-section__more { font-family: var(--vp-font-family-base); font-size: 0.88rem; font-weight: 700; color: #164e45; text-decoration: none; }
+.archive-section__more:hover { text-decoration: underline; }
+
+.archive-anxiety-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-divider); }
+.archive-anxiety-card { display: flex; flex-direction: column; justify-content: space-between; padding: 1.25rem; background: #fffdf8; text-decoration: none; transition: background-color 150ms ease; }
+.archive-anxiety-card:hover { background: #f3efe4; }
+.archive-anxiety-card__quote { margin: 0 !important; color: #16211d; font-family: var(--vp-font-family-base) !important; font-size: 0.98rem !important; font-weight: 700; line-height: 1.5 !important; }
+.archive-anxiety-card__route { margin: 0.75rem 0 0 !important; color: #164e45; font-family: var(--vp-font-family-base) !important; font-size: 0.84rem !important; font-weight: 600; line-height: 1.4 !important; }
+
+.archive-roadmap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-divider); }
+.archive-part { padding: 1.35rem; background: #fffdf8; }
+.archive-part__tag { margin: 0 !important; color: #164e45; font-family: var(--vp-font-family-base) !important; font-size: 0.72rem !important; font-weight: 700; letter-spacing: 0.12em; line-height: 1.4 !important; }
+.archive-part h3 { margin: 0.4rem 0 0.75rem !important; font-size: 1.15rem !important; font-family: var(--vp-font-family-base); color: #16211d; }
+.archive-part ul { margin: 0; padding: 0; list-style: none; }
+.archive-part li { font-family: var(--vp-font-family-base) !important; font-size: 0.88rem !important; line-height: 1.65 !important; margin: 0.28rem 0; }
+.archive-part li a { color: #394440; text-decoration: none; }
+.archive-part li a:hover { color: #164e45; text-decoration: underline; }
+
+.archive-utility-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--vp-c-divider); background: var(--vp-c-divider); }
+.archive-utility-card { display: flex; flex-direction: column; justify-content: space-between; padding: 1.25rem; background: #fffdf8; }
+.archive-utility-card h3 { margin: 0.45rem 0 0.5rem !important; font-size: 1.08rem !important; color: #16211d; }
+.archive-utility-card p { margin: 0 0 0.9rem !important; font-size: 0.9rem !important; line-height: 1.65 !important; color: #4f5a56; }
+.archive-utility-card a { font-family: var(--vp-font-family-base); font-size: 0.86rem; font-weight: 700; color: #164e45; text-decoration: none; }
+.archive-utility-card a:hover { text-decoration: underline; }
+
+@media (max-width: 1024px) {
+  .archive-anxiety-grid, .archive-roadmap, .archive-utility-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 768px) {
+  .VPDoc table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .archive-home { grid-template-columns: 1fr; width: min(100% - 2rem, 680px); gap: 1.25rem; padding: 2rem 0 2.75rem; }
   .archive-index { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: end; column-gap: 1rem; row-gap: 0.3rem; margin-top: 0; padding-top: 0.8rem; }
   .archive-index__eyebrow { grid-column: 1 / -1; }
@@ -93,8 +128,13 @@ body {
   .archive-home__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; margin-top: 1.55rem; }
   .archive-home__actions a { justify-content: center; min-height: 50px; padding: 0 0.65rem; font-size: 0.86rem !important; text-align: center; }
   .archive-home__actions a:first-child { grid-column: 1 / -1; }
-  .archive-signals, .archive-grid { grid-template-columns: 1fr; }
+  .archive-section { width: min(100% - 2rem, 680px); margin-bottom: 2.5rem; }
+  .archive-signals, .archive-grid, .archive-anxiety-grid, .archive-roadmap, .archive-utility-grid { grid-template-columns: 1fr; }
   .archive-panel--wide, .archive-panel--narrow { grid-column: span 1; }
+}
+@media print {
+  .VPNav, .VPSidebar, .VPLocalNav, .VPDocAsideOutline, .VPDocFooter { display: none !important; }
+  body { background: #fff !important; }
 }
 @media (prefers-reduced-motion: no-preference) { .archive-index, .archive-home__main, .archive-signal, .archive-panel { animation: archive-reveal 360ms cubic-bezier(0.23, 1, 0.32, 1) both; } .archive-home__main { animation-delay: 45ms; } .archive-signal:nth-child(2) { animation-delay: 55ms; } .archive-signal:nth-child(3) { animation-delay: 90ms; } .archive-panel:nth-child(2) { animation-delay: 70ms; } }
 @keyframes archive-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
