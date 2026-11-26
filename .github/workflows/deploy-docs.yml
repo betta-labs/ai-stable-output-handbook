@@ -55,9 +55,17 @@ jobs:
           VITEPRESS_EXPECTED_BASE: ${{ steps.pages.outputs.base_path }}/
         run: pnpm test:site
       - name: Upload static artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .vitepress/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
