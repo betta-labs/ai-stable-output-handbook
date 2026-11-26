@@ -4,7 +4,7 @@
 # build.sh 读取本文件，按顺序执行 Pandoc → Typst → PDF。
 
 title: 企业 AI 落地实战手册
-version: v2.0.0
+version: v2.1.0
 author: Jace
 year: "2026"
 lang: zh-CN

@@ -25,7 +25,7 @@
 
 ## 版本与维护
 
-- 当前工作版本：v2.0.0（2026 年 8 月）；
+- 当前工作版本：v2.1.0（2026 年 11 月）；
 - 网站（[handbook.sanage.xyz](https://handbook.sanage.xyz/)）只提供阅读层，[GitHub 仓库](https://github.com/betta-labs/ai-stable-output-handbook)是版本、来源、事实卡和协作反馈的唯一真源；
 - 模型能力、工具功能、案例披露和组织实践都会变化，因此具体事实以来源、日期和事实卡为准，方法章节提供的是可被挑战和更新的判断框架；
 - 后续版本将根据已验证的实践记录、读者反馈与动态事实复核结果迭代。
@@ -35,7 +35,7 @@
 如需引用本书内容，建议注明：
 
 ```text
-Jace.《企业 AI 落地实战手册》v2.0.0. betta-labs/ai-stable-output-handbook. 2026 年 11 月.
+Jace.《企业 AI 落地实战手册》v2.1.0. betta-labs/ai-stable-output-handbook. 2026 年 11 月.
 ```
 
 内容采用 [CC BY-NC 4.0（署名—非商业性使用 4.0 国际）](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans)许可。商业用途（包括出版、培训课程改编、付费内容）须事先获得授权。

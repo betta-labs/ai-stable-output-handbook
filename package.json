@@ -1,6 +1,6 @@
 {
   "name": "enterprise-ai-stable-output-handbook",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "description": "《企业 AI 落地实战手册》的VitePress阅读站与内容校验工具。",

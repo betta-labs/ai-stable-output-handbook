@@ -18,7 +18,7 @@ editLink: false
   <aside class="archive-index" aria-label="手册版本信息">
     <p class="archive-index__eyebrow">SANAGE / OPEN HANDBOOKS</p>
     <p class="archive-index__number">01</p>
-    <p class="archive-index__version">企业 AI 落地实战手册<br>版本 v2.0.0 · 2026 年 11 月</p>
+    <p class="archive-index__version">企业 AI 落地实战手册<br>版本 v2.1.0 · 2026 年 11 月</p>
   </aside>
 
   <div class="archive-home__main">
@@ -79,7 +79,7 @@ editLink: false
     <p class="archive-panel__label">05 / 版本与协作</p>
     <h2>阅读层服务理解；GitHub 保持事实真源。</h2>
     <p>本网站由仓库 Markdown 构建。版本、来源、事实卡、PDF、许可证与可复核反馈均以 GitHub 仓库为准。</p>
-    <p><a href="./updates">阅读 v2.0.0 更新说明 →</a></p>
+    <p><a href="./updates">阅读 v2.1.0 更新说明 →</a></p>
   </section>
 </div>
 

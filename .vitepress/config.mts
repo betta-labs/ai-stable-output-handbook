@@ -180,7 +180,7 @@ export default defineConfig({
     const schema = isHome
       ? { '@context': 'https://schema.org', '@graph': [
         { '@type': 'WebSite', name: '企业 AI 落地实战手册', url: SITE_URL, inLanguage: 'zh-Hans', description: DEFAULT_DESCRIPTION, publisher: PUBLISHER },
-        { '@type': 'Book', name: '企业 AI 落地实战手册', version: '2.0.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: canonicalUrl, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
+        { '@type': 'Book', name: '企业 AI 落地实战手册', version: '2.1.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: canonicalUrl, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
       ] }
       : isAbout
         ? { '@context': 'https://schema.org', '@graph': [

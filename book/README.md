@@ -65,7 +65,7 @@ typst watch book/main.typ       # 边改边看（手动）
 
 ## 输出
 
-- `dist/企业AI落地实战手册-v2.0.0.pdf` — 全书 PDF（约 375 页）
+- `dist/企业AI落地实战手册-v2.1.0.pdf` — 全书 PDF（约 375 页）
 - `dist/preview/page-{n}.png` — 逐页预览图
 
 ## 阶段路线

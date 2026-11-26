@@ -4,7 +4,7 @@
 #let title = "企业 AI 落地实战手册"
 #let title-en = "Enterprise AI Implementation Handbook"
 #let tagline = "从最小闭环到可复核、可接管的运行系统"
-#let version = "v2.0.0"
+#let version = "v2.1.0"
 #let year = "2026"
 #let series = "OPEN HANDBOOKS · 01"
 #let author = "Jace"

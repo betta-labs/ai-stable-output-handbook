@@ -202,7 +202,7 @@ rm -f "$SRC_MAP_FILE"
 # ====================
 # 4. Typst → PDF
 # ====================
-OUTPUT="$DIST/企业AI落地实战手册-v2.0.0.pdf"
+OUTPUT="$DIST/企业AI落地实战手册-v2.1.0.pdf"
 echo "[typst]  main.typ -> $(basename "$OUTPUT")"
 typst compile "$BOOK/main.typ" "$OUTPUT"
 

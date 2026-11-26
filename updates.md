@@ -1,6 +1,6 @@
 ---
 title: 更新与版本说明
-description: 查看《企业 AI 落地实战手册》v2.0.0的范围、事实边界与后续维护方式。
+description: 查看《企业 AI 落地实战手册》v2.1.0的范围、事实边界与后续维护方式。
 outline: false
 editLink: false
 ---
@@ -9,7 +9,19 @@ editLink: false
 
 # 更新与版本说明
 
-## 当前版本：v2.0.0
+## 当前版本：v2.1.0
+
+v2.1.0 正式将书名更名为《企业 AI 落地实战手册》，在 v2.0.0 的基础体系上，系统补齐了 2026 企业 AI 落地所需的关键合规、安全、工程可靠性与可运行资产：
+
+| 本次变化 | 为什么重要 | 相关入口 |
+| --- | --- | --- |
+| 正式更名为《企业 AI 落地实战手册》 | 聚焦企业级落地主场景，同时保留“可复核、可维护、可接管”的核心稳定产出方法论。 | [首页](/) · [关于作者](/about) |
+| 补齐中国与欧盟 AI 合规及 OWASP 2026 安全框架 | 覆盖《生成式人工智能服务管理暂行办法》《人工智能生成合成内容标识办法》（GB 45438-2025）、EU AI Act 参照、MCP 供应链与 NHI 凭证控制。 | [第 15 章](/handbook/security-and-compliance) · [附录 D](/appendices/sources-cases-and-fact-maintenance) |
+| 补强 2026 工程稳定性控制与推理模型经济性 | 纳入推理模型路由、JSON Schema 受限解码、工具幂等性与事务补偿、LLM-as-a-Judge 校准与轨迹评测。 | [第 3 章](/handbook/calibrate-ai-capabilities) · [第 4 章](/handbook/from-generation-to-reproducible-workflows) · [第 9 章](/handbook/agent-and-automation-governance) · [第 11 章](/handbook/value-and-evaluation) |
+| 补齐数字化底座、共享基建与 FDE 本土交付 | 新增“流程与数据底座”阻塞条件、≥3 用例共享基建触发判断、FDE 4 周节奏与国内交付错配防范。 | [第 2 章](/handbook/diagnose-your-constraint) · [第 8 章](/handbook/scale-use-cases-with-priority) · [第 12 章](/handbook/governance-and-organization) |
+| 拉齐导读骨架并增加机器可读样例 | 统一全书 `本章路标 + 十分钟练习`，新增 Text-to-SQL / Coding Agent 情景与 YAML/JSON Schema/JSONL 契约样例。 | [第 16 章](/handbook/public-cases-and-teaching-scenarios) · [附录 A](/appendices/reusable-checklists-and-templates) |
+
+## 历史版本：v2.0.0
 
 v2.0.0 在可复现工作流、Skill、受控 Agent、上下文/记忆/工具治理、试点评测与运行韧性的基础上，补入动态事实治理、公开案例来源边界、价值评估证据、人机协同与目标受托章节，以及 Coding Agent、Work Agent 和目标契约等可复用资产。
 
