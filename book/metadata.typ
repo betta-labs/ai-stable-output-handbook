@@ -1,9 +1,9 @@
 // metadata.typ — 书籍元信息与视觉调色板（唯一事实源，封面 / styles / components 共用）
 
 // ---- 书籍元信息 ----
-#let title = "企业 AI 稳定产出手册"
-#let title-en = "Enterprise AI Stable Output Handbook"
-#let tagline = "可复核 · 可维护 · 可接管"
+#let title = "企业 AI 落地实战手册"
+#let title-en = "Enterprise AI Implementation Handbook"
+#let tagline = "从最小闭环到可复核、可接管的运行系统"
 #let version = "v2.0.0"
 #let year = "2026"
 #let series = "OPEN HANDBOOKS · 01"

@@ -47,42 +47,53 @@
 #include "generated/chapter-03.typ"
 
 // ====================
-// Part II: 从单次生成到可复现工作流
+// Part II: 方法与基础
 // ====================
 
 #part(
   "II",
-  "从单次生成到可复现工作流",
-  subtitle: "把个人技巧变成团队可重复的工作方法",
+  "方法与基础",
+  subtitle: "从单次生成到可复现工作流与上下文底座",
 )
 
 #include "generated/chapter-04.typ"
 #include "generated/chapter-05.typ"
-#include "generated/chapter-06.typ"
 
 // ====================
-// Part III: 规模化与组织落地
+// Part III: 执行与落地
 // ====================
 
 #part(
   "III",
-  "规模化与组织落地",
-  subtitle: "从单一闭环到受控用例组合",
+  "执行与落地",
+  subtitle: "从最小闭环、员工日常协作到多场景扩展",
 )
 
+#include "generated/chapter-06.typ"
 #include "generated/chapter-07.typ"
 #include "generated/chapter-08.typ"
-#include "generated/chapter-09.typ"
-#include "generated/chapter-10.typ"
 
 // ====================
-// Part IV: 价值、治理与韧性
+// Part IV: 进阶决策
 // ====================
 
 #part(
   "IV",
-  "价值、治理与韧性",
-  subtitle: "用证据决策，用治理保障，用韧性应对变化",
+  "进阶决策",
+  subtitle: "Agent 受控编排与专项能力适用判断",
+)
+
+#include "generated/chapter-09.typ"
+#include "generated/chapter-10.typ"
+
+// ====================
+// Part V: 度量与治理
+// ====================
+
+#part(
+  "V",
+  "度量与治理",
+  subtitle: "用证据决策，用组织协同、韧性与合规保障运行",
 )
 
 #include "generated/chapter-11.typ"
@@ -92,13 +103,13 @@
 #include "generated/chapter-15.typ"
 
 // ====================
-// Part V: 实践案例
+// Part VI: 案例与收束
 // ====================
 
 #part(
-  "V",
-  "实践案例",
-  subtitle: "从案例中学习控制，而非制造效果幻觉",
+  "VI",
+  "案例与收束",
+  subtitle: "从公开案例与教学情景中学习控制，而非制造效果幻觉",
 )
 
 #include "generated/chapter-16.typ"

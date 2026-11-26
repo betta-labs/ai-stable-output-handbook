@@ -361,6 +361,14 @@ if (!errors.length) {
     errors.push('.handbook/维护节奏与质量门.md：必须维护关键行动的四问规则')
   }
 
+  if (!chapterFifteen.includes('生成式人工智能服务管理暂行办法') || !chapterFifteen.includes('人工智能生成合成内容标识办法') || !chapterFifteen.includes('OWASP Top 10 for Agentic Applications')) {
+    errors.push('第15章：必须保留中国生成式AI专项合规、内容标识义务及OWASP Agentic安全标准参照')
+  }
+
+  if (!chapterTwo.includes('流程与数据底座')) {
+    errors.push('第2章：阻塞条件表必须包含“流程与数据底座”前置检查')
+  }
+
   if (!chapterResponsibilityMap.includes('可直接使用的暂停/拒绝/上报话术') || !chapterResponsibilityMap.includes('反证式指标解释')) {
     errors.push('.handbook/章节职责卡.md：必须反映员工升级语言和评测反证职责')
   }

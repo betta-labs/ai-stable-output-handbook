@@ -1,5 +1,5 @@
 ---
-description: 企业 AI 稳定产出手册印刷级 PDF 的构建说明，涵盖 Typst + Pandoc 组件系统、全书 manifest、后处理与一键构建流程。
+description: 企业 AI 落地实战手册印刷级 PDF 的构建说明，涵盖 Typst + Pandoc 组件系统、全书 manifest、后处理与一键构建流程。
 ---
 
 # book/ — 印刷级 PDF 构建（Typst + Pandoc）
@@ -65,7 +65,7 @@ typst watch book/main.typ       # 边改边看（手动）
 
 ## 输出
 
-- `dist/企业AI稳定产出手册-v2.0.0.pdf` — 全书 PDF（约 360 页）
+- `dist/企业AI落地实战手册-v2.0.0.pdf` — 全书 PDF（约 375 页）
 - `dist/preview/page-{n}.png` — 逐页预览图
 
 ## 阶段路线

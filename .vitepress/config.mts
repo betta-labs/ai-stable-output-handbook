@@ -118,7 +118,7 @@ function sourceForPage(page: string): string {
 
 export default defineConfig({
   lang: 'zh-Hans',
-  title: '企业 AI 稳定产出手册',
+  title: '企业 AI 落地实战手册',
   titleTemplate: false,
   base: BASE,
   cleanUrls: true,
@@ -132,7 +132,7 @@ export default defineConfig({
   }],
   head: [
     ['meta', { name: 'author', content: 'Jace' }],
-    ['meta', { name: 'application-name', content: '企业 AI 稳定产出手册' }],
+    ['meta', { name: 'application-name', content: '企业 AI 落地实战手册' }],
     ['meta', { name: 'theme-color', content: '#164E45' }],
     ['meta', { name: 'color-scheme', content: 'light' }],
     ['link', { rel: 'icon', href: assetUrl('brand-mark.svg'), type: 'image/svg+xml' }],
@@ -171,7 +171,7 @@ export default defineConfig({
     const canonicalUrl = source.endsWith('/index.md') && !canonical.endsWith('/') ? `${canonical}/` : canonical
     const isHome = canonicalUrl === `${SITE_URL}/`
     const isAbout = canonicalUrl === `${SITE_URL}/about`
-    const title = isHome ? '企业 AI 稳定产出手册' : meta?.title ?? context.title
+    const title = isHome ? '企业 AI 落地实战手册' : meta?.title ?? context.title
     const description = meta?.description ?? context.description ?? DEFAULT_DESCRIPTION
     const lastUpdated = context.pageData.lastUpdated ? new Date(context.pageData.lastUpdated).toISOString() : undefined
     const publishedAt = '2026-08-21T00:00:00+08:00'
@@ -179,8 +179,8 @@ export default defineConfig({
     if (!isHome) breadcrumb.push({ '@type': 'ListItem', position: 2, name: title, item: canonical })
     const schema = isHome
       ? { '@context': 'https://schema.org', '@graph': [
-        { '@type': 'WebSite', name: '企业 AI 稳定产出手册', url: SITE_URL, inLanguage: 'zh-Hans', description: DEFAULT_DESCRIPTION, publisher: PUBLISHER },
-        { '@type': 'Book', name: '企业 AI 稳定产出手册', version: '2.0.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: canonicalUrl, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
+        { '@type': 'WebSite', name: '企业 AI 落地实战手册', url: SITE_URL, inLanguage: 'zh-Hans', description: DEFAULT_DESCRIPTION, publisher: PUBLISHER },
+        { '@type': 'Book', name: '企业 AI 落地实战手册', version: '2.0.0', inLanguage: 'zh-Hans', author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, license: 'https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans', url: canonicalUrl, sameAs: REPOSITORY_URL, image: OG_IMAGE, description: DEFAULT_DESCRIPTION }
       ] }
       : isAbout
         ? { '@context': 'https://schema.org', '@graph': [
@@ -188,7 +188,7 @@ export default defineConfig({
           { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
         ] }
         : { '@context': 'https://schema.org', '@graph': [
-          { '@type': 'Article', headline: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl }, image: OG_IMAGE, datePublished: publishedAt, ...(lastUpdated ? { dateModified: lastUpdated } : {}), author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, isPartOf: { '@type': 'Book', name: '企业 AI 稳定产出手册', url: SITE_URL } },
+          { '@type': 'Article', headline: title, description, inLanguage: 'zh-Hans', url: canonicalUrl, mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl }, image: OG_IMAGE, datePublished: publishedAt, ...(lastUpdated ? { dateModified: lastUpdated } : {}), author: { '@type': 'Person', name: 'Jace', url: AUTHOR_URL }, publisher: PUBLISHER, isPartOf: { '@type': 'Book', name: '企业 AI 落地实战手册', url: SITE_URL } },
           { '@type': 'BreadcrumbList', itemListElement: breadcrumb }
         ] }
     return [
@@ -197,7 +197,7 @@ export default defineConfig({
       ['meta', { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }],
       ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
       ['meta', { property: 'og:locale', content: 'zh_CN' }],
-      ['meta', { property: 'og:site_name', content: '企业 AI 稳定产出手册' }],
+      ['meta', { property: 'og:site_name', content: '企业 AI 落地实战手册' }],
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: canonicalUrl }],
@@ -206,12 +206,12 @@ export default defineConfig({
       ['meta', { property: 'og:image:type', content: 'image/png' }],
       ['meta', { property: 'og:image:width', content: '1200' }],
       ['meta', { property: 'og:image:height', content: '630' }],
-      ['meta', { property: 'og:image:alt', content: '企业 AI 稳定产出手册：让企业 AI 的结果成为可运行的方法' }],
+      ['meta', { property: 'og:image:alt', content: '企业 AI 落地实战手册：从最小闭环到可复核、可维护、可接管的运行系统' }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
       ['meta', { name: 'twitter:image', content: OG_IMAGE }],
-      ['meta', { name: 'twitter:image:alt', content: '企业 AI 稳定产出手册：让企业 AI 的结果成为可运行的方法' }],
+      ['meta', { name: 'twitter:image:alt', content: '企业 AI 落地实战手册：从最小闭环到可复核、可维护、可接管的运行系统' }],
       ...(!isHome ? [
         ['meta', { property: 'article:published_time', content: publishedAt }],
         ...(lastUpdated ? [['meta', { property: 'article:modified_time', content: lastUpdated }]] : [])
@@ -255,7 +255,7 @@ export default defineConfig({
   },
   themeConfig: {
     logo: '/brand-mark.svg',
-    siteTitle: '企业 AI 稳定产出手册',
+    siteTitle: '企业 AI 落地实战手册',
     nav: [
       { text: '快速开始', link: '/quickstart' }, { text: '从问题开始', link: '/start' }, { text: '专题', link: '/learn/enterprise-ai', activeMatch: '^/learn/' }, { text: '手册', link: '/handbook/preface', activeMatch: '^/handbook/' },
       { text: '模板', link: '/templates', activeMatch: '^/appendices/|^/templates' }, { text: '案例与证据', link: '/cases/', activeMatch: '^/cases/|^/evidence/|^/facts/' },

@@ -1,8 +1,9 @@
-# 企业 AI 稳定产出手册（Enterprise AI Stable Output Handbook）
+# 企业 AI 落地实战手册（Enterprise AI Implementation Handbook）
 
-> 让 AI 真正落地：从最小闭环到企业运行系统，面向业务、交付、治理与培训的可复现 AI 工作方法。
+> 从最小闭环到可复核、可维护、可接管的运行系统——面向业务、交付、治理与培训的可复现 AI 工作方法。
 
-**主书名**：《企业 AI 稳定产出手册》
+**主书名**：《企业 AI 落地实战手册》
+**副题/核心命题**：从最小闭环到可复核、可维护、可接管的稳定产出运行系统
 **传播语**：让 AI 真正落地
 **仓库**：betta-labs/ai-stable-output-handbook
 **工作版本**：v2.0.0

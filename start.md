@@ -1,6 +1,6 @@
 ---
 title: 从问题开始
-description: 用五个常见企业AI约束，定位《企业 AI 稳定产出手册》的推荐阅读路径。
+description: 用常见企业AI约束，定位《企业 AI 落地实战手册》的推荐阅读路径。
 outline: false
 editLink: false
 ---

@@ -1,5 +1,5 @@
 # https://handbook.sanage.xyz/robots.txt
-# 企业 AI 稳定产出手册 - 允许主流搜索引擎与 AI 检索爬虫
+# 企业 AI 落地实战手册 - 允许主流搜索引擎与 AI 检索爬虫
 
 User-agent: *
 Allow: /

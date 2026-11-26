@@ -1,11 +1,11 @@
 ---
 layout: page
-title: 企业 AI 稳定产出手册｜从最小闭环到可运行方法
-description: 《企业 AI 稳定产出手册》帮助企业把 AI 从个人提效推进为可复核、可维护、可接管的工作方法。从自诊断、最小闭环、上下文与工具治理，到 Agent 决策、评测与回退，提供可落地的框架与模板。
+title: 企业 AI 落地实战手册｜从最小闭环到可复核、可接管的运行系统
+description: 《企业 AI 落地实战手册》帮助企业把 AI 从个人提效推进为可复核、可维护、可接管的稳定产出运行系统。从自诊断、最小闭环、上下文与工具治理，到 Agent 决策、评测与回退，提供可落地的框架与模板。
 head:
   - - meta
     - name: keywords
-      content: 企业AI, 企业AI落地, AI治理, Agent, 可复核工作流
+      content: 企业AI落地, 企业AI实战手册, AI治理, Agent落地, 可复核工作流
 titleTemplate: false
 pageClass: handbook-home
 outline: false
@@ -18,15 +18,15 @@ editLink: false
   <aside class="archive-index" aria-label="手册版本信息">
     <p class="archive-index__eyebrow">SANAGE / OPEN HANDBOOKS</p>
     <p class="archive-index__number">01</p>
-    <p class="archive-index__version">企业 AI 稳定产出手册<br>版本 v2.0.0 · 2026 年 8 月</p>
+    <p class="archive-index__version">企业 AI 落地实战手册<br>版本 v2.0.0 · 2026 年 11 月</p>
   </aside>
 
   <div class="archive-home__main">
     <p class="archive-home__kicker">可复核 · 可维护 · 可接管</p>
-    <h1>企业 AI 如何稳定产出：从最小闭环到可运行方法</h1>
+    <h1>企业 AI 落地实战手册：从最小闭环到稳定产出</h1>
     <p class="archive-home__lede">
-      《企业 AI 稳定产出手册》不是工具清单，也不承诺统一成功路径。
-      它回答一个更基础的问题：在业务边界、人工责任和风险控制明确的前提下，如何让 AI 参与的工作产生可复核、可维护、可接管的结果。
+      《企业 AI 落地实战手册》不是工具清单，也不承诺统一成功路径。
+      它回答一个更基础的问题：在业务边界、人工责任和风险控制明确的前提下，如何让 AI 参与的工作产生可复核、可维护、可接管的稳定产出。
       内容覆盖自诊断、最小闭环、上下文与知识、Agent 治理、评测与回退，供业务、交付与治理团队直接取用。
     </p>
     <div class="archive-home__actions">

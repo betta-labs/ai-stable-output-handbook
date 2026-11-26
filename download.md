@@ -1,6 +1,6 @@
 ---
 title: 下载与引用
-description: 下载《企业 AI 稳定产出手册》v2.0.0 PDF，访问GitHub真源，并按CC BY-NC 4.0了解使用与引用边界。
+description: 下载《企业 AI 落地实战手册》v2.0.0 PDF，访问GitHub真源，并按CC BY-NC 4.0了解使用与引用边界。
 outline: false
 editLink: false
 ---
@@ -11,9 +11,9 @@ editLink: false
 
 ## 下载 PDF
 
-当前发布版为 **v2.0.0**。PDF 适合离线阅读、内部研讨和发送给需要完整目录的人；如果需要查看最新修订、来源、事实卡或参与反馈，请优先访问 GitHub 仓库。
+当前版本为 **v2.0.0**。PDF 适合离线阅读、内部研讨和发送给需要完整目录的人；如果需要查看最新修订、来源、事实卡或参与反馈，请优先访问 GitHub 仓库。
 
-- [下载《企业 AI 稳定产出手册》v2.0.0 PDF](https://github.com/betta-labs/ai-stable-output-handbook/raw/refs/tags/v2.0.0/%E4%BC%81%E4%B8%9AAI%E7%A8%B3%E5%AE%9A%E4%BA%A7%E5%87%BA%E6%89%8B%E5%86%8C-v2.0.0.pdf)
+- [下载《企业 AI 落地实战手册》v2.0.0 PDF](https://github.com/betta-labs/ai-stable-output-handbook/raw/refs/heads/main/%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C-v2.0.0.pdf)
 - [访问 GitHub 仓库与版本记录](https://github.com/betta-labs/ai-stable-output-handbook)
 
 ## 引用与使用
@@ -22,4 +22,4 @@ editLink: false
 
 建议引用格式：
 
-> Jace. 《企业 AI 稳定产出手册》v2.0.0. betta-labs, 2026. https://github.com/betta-labs/ai-stable-output-handbook
+> Jace. 《企业 AI 落地实战手册》v2.0.0. betta-labs, 2026. https://github.com/betta-labs/ai-stable-output-handbook

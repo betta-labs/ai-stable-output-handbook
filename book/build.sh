@@ -20,34 +20,37 @@ mkdir -p "$GEN" "$DIST"
 # 1. 从 book.yaml 读取全书清单，生成临时 manifest
 # ====================
 MANIFEST_FILE=$(mktemp)
-python3 - "$BOOK/book.yaml" "$MANIFEST_FILE" << 'PYEOF'
-import sys, yaml
+SRC_MAP_FILE=$(mktemp)
+python3 - "$BOOK/book.yaml" "$MANIFEST_FILE" "$SRC_MAP_FILE" << 'PYEOF'
+import sys, re
 
-with open(sys.argv[1], "r") as f:
-    book = yaml.safe_load(f)
+try:
+    import yaml
+    with open(sys.argv[1], "r", encoding="utf-8") as f:
+        book = yaml.safe_load(f)
+    entries = []
+    for item in book.get("frontmatter", []):
+        entries.append((item["src"], item["out"]))
+    for part in book.get("parts", []):
+        for ch in part.get("chapters", []):
+            entries.append((ch["src"], ch["out"]))
+    for item in book.get("backmatter", []):
+        entries.append((item["src"], item["out"]))
+    for item in book.get("appendices", []):
+        entries.append((item["src"], item["out"]))
+except ImportError:
+    # 无 PyYAML 依赖时的标准库兜底解析：提取 book.yaml 中的 src/out 配对
+    with open(sys.argv[1], "r", encoding="utf-8") as f:
+        text = f.read()
+    entries = re.findall(r'-\s+src:\s+([^\s]+)\s*\n\s+out:\s+([^\s]+)', text)
 
-entries = []
+with open(sys.argv[2], "w", encoding="utf-8") as f:
+    for src, out in entries:
+        f.write(f"{src}|{out}\n")
 
-# Frontmatter
-for item in book.get("frontmatter", []):
-    entries.append(f"{item['src']}|{item['out']}")
-
-# Parts + chapters
-for part in book.get("parts", []):
-    for ch in part.get("chapters", []):
-        entries.append(f"{ch['src']}|{ch['out']}")
-
-# Backmatter
-for item in book.get("backmatter", []):
-    entries.append(f"{item['src']}|{item['out']}")
-
-# Appendices
-for item in book.get("appendices", []):
-    entries.append(f"{item['src']}|{item['out']}")
-
-with open(sys.argv[2], "w") as f:
-    for e in entries:
-        f.write(e + "\n")
+with open(sys.argv[3], "w", encoding="utf-8") as f:
+    for src, out in entries:
+        f.write(f"{src}|{out}\n")
 
 print(f"[manifest] {len(entries)} files from book.yaml")
 PYEOF
@@ -123,39 +126,83 @@ if changed_count > 0:
 PYEOF
 
 # ====================
-# 3.5 后处理：将内部交叉引用链接转为纯文本
-# Pandoc 将 Markdown 内部链接 [text](#anchor) 转为 #link(<anchor>)[text]，
-# 但 anchor 与实际 heading label 不匹配会导致 Typst 报错。
-# 这里将所有 #link(<label>)[text] 转为纯 text（外部 URL 链接不受影响）。
+# 3.5 后处理：解析书内章节跳转为 Typst 真实标签，站外入口映射为阅读站 URL
 # ====================
-python3 - "$GEN" << 'PYEOF'
+python3 - "$GEN" "$SRC_MAP_FILE" "$ROOT/.vitepress/page-meta.ts" << 'PYEOF'
 import sys, os, glob, re
 
-gen_dir = sys.argv[1]
+gen_dir, src_map_file, page_meta_file = sys.argv[1], sys.argv[2], sys.argv[3]
+
+# 1. 建立 源码文件名 -> 生成的 .typ 文件 -> 章节一级标题 Typst label 的映射
+src_to_out = {}
+with open(src_map_file, "r", encoding="utf-8") as f:
+    for line in f:
+        src, out = line.strip().split("|", 1)
+        src_to_out[src] = out
+
+out_to_label = {}
+known_labels = set()
+for fpath in glob.glob(os.path.join(gen_dir, "*.typ")):
+    fname = os.path.basename(fpath)
+    content = open(fpath, "r", encoding="utf-8").read()
+    for m in re.finditer(r'^<([^>\s]+)>$', content, re.M):
+        known_labels.add(m.group(1))
+    m1 = re.search(r'^=\s+[^\n]+\n+<([^>\s]+)>', content, re.M)
+    if m1:
+        out_to_label[fname] = m1.group(1)
+
+# 2. 解析在线阅读站路由，让站外页面（如事实卡、高管摘要、ROI 专题）在 PDF 中保留真实可点击 URL
+site_routes = {}
+if os.path.exists(page_meta_file):
+    meta_txt = open(page_meta_file, "r", encoding="utf-8").read()
+    for m in re.finditer(r"route:\s*'([^']+)'", meta_txt):
+        pass
+    # 从 pageRoutes / pageMeta 抽取 'source.md': { ... route: '/...' }
+    for m in re.finditer(r"'([^']+\.md)'\s*:\s*\{[^}]*?route:\s*'([^']+)'", meta_txt, re.S):
+        site_routes[m.group(1)] = f"https://handbook.sanage.xyz{m.group(2)}"
+
+def replace_label_link(m):
+    label, text = m.group(1), m.group(2)
+    if label in known_labels:
+        return f'#link(<{label}>)[{text}]'
+    return text
+
+def replace_file_link(m):
+    target, text = m.group(1), m.group(2)
+    if re.match(r'^https?://', target):
+        return m.group(0)
+    clean_file = target.split("#", 1)[0].split("?", 1)[0]
+    if clean_file in src_to_out:
+        out_typ = src_to_out[clean_file]
+        if out_typ in out_to_label:
+            return f'#link(<{out_to_label[out_typ]}>)[{text}]'
+    if clean_file in site_routes:
+        return f'#link("{site_routes[clean_file]}")[{text}]'
+    return text
+
+label_pat = re.compile(r'#link\(<([^>]+)>\)\[([^\]]*)\]')
+file_pat = re.compile(r'#link\("([^"]+)"\)\[([^\]]*)\]')
+
 changed_count = 0
-
-# 匹配 #link(<label>)[text]，label 不含 >，text 不含 ]（简单情况）
-pattern = re.compile(r'#link\(<[^>]+>\)\[([^\]]*)\]')
-
 for fpath in sorted(glob.glob(os.path.join(gen_dir, "*.typ"))):
-    with open(fpath, "r") as f:
+    with open(fpath, "r", encoding="utf-8") as f:
         content = f.read()
-
-    new_content = pattern.sub(r'\1', content)
-
+    new_content = label_pat.sub(replace_label_link, content)
+    new_content = file_pat.sub(replace_file_link, new_content)
     if new_content != content:
-        with open(fpath, "w") as f:
+        with open(fpath, "w", encoding="utf-8") as f:
             f.write(new_content)
         changed_count += 1
 
 if changed_count > 0:
-    print(f"  [post-process] converted internal links to text in {changed_count} files")
+    print(f"  [post-process] resolved internal & web links in {changed_count} files")
 PYEOF
+rm -f "$SRC_MAP_FILE"
 
 # ====================
 # 4. Typst → PDF
 # ====================
-OUTPUT="$DIST/企业AI稳定产出手册-v2.0.0.pdf"
+OUTPUT="$DIST/企业AI落地实战手册-v2.0.0.pdf"
 echo "[typst]  main.typ -> $(basename "$OUTPUT")"
 typst compile "$BOOK/main.typ" "$OUTPUT"
 

@@ -1,6 +1,6 @@
-# 关于作者与《企业 AI 稳定产出手册》
+# 关于作者与《企业 AI 落地实战手册》
 
-《企业 AI 稳定产出手册》（Enterprise AI Stable Output Handbook）是一份面向企业实际使用者的工作方法手册，目标是帮助个人和团队把 AI 使用从“偶尔提效”推进到“可复现、可验证、可长期运行”的稳定状态。
+《企业 AI 落地实战手册》（Enterprise AI Implementation Handbook）是一份面向企业实际使用者的工作方法手册，目标是帮助个人和团队把 AI 使用从“偶尔提效”推进到“可复现、可验证、可长期运行”的稳定产出状态。
 
 ## 作者
 
@@ -35,7 +35,7 @@
 如需引用本书内容，建议注明：
 
 ```text
-Jace.《企业 AI 稳定产出手册》v2.0.0. betta-labs/ai-stable-output-handbook. 2026 年 8 月.
+Jace.《企业 AI 落地实战手册》v2.0.0. betta-labs/ai-stable-output-handbook. 2026 年 11 月.
 ```
 
 内容采用 [CC BY-NC 4.0（署名—非商业性使用 4.0 国际）](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans)许可。商业用途（包括出版、培训课程改编、付费内容）须事先获得授权。

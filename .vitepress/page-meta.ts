@@ -57,7 +57,7 @@ export const pageRoutes: Record<string, string> = {
 }
 
 export const pageMeta: Record<string, PageMeta> = {
-  'about.md': { title: '关于作者与《企业 AI 稳定产出手册》', description: '了解《企业 AI 稳定产出手册》的作者背景、研究方法、维护方式、版本历史与引用规范。' },
+  'about.md': { title: '关于作者与《企业 AI 落地实战手册》', description: '了解《企业 AI 落地实战手册》的作者背景、研究方法、维护方式、版本历史与引用规范。' },
   'executive-summary.md': { title: '高管执行摘要：企业 AI 稳定产出的决策要览', description: '面向 CEO 与高管的决策摘要：核心论点、90 天计划、10 条治理铁律、阶段闸门、关键指标与风险签字责任。' },
   'quickstart.md': { title: '角色化快速开始：从战略到落地的行动路线', description: '按 CEO、业务负责人、员工、知识/技术 Owner 与 AI COE 角色，找到第一周、第一个月与第一个季度的行动清单。' },
   'lightweight-start.md': { title: '企业 AI 轻量启动：人少预算有限，如何先跑第一个最小闭环', description: '用高频小场景、明确的代替动作、风险相称的观察与三类证据，决定企业 AI 继续、缩小或停止。' },
@@ -85,7 +85,7 @@ export const pageMeta: Record<string, PageMeta> = {
   '16-后记-从个人提效到企业级稳定产出.md': { title: '后记：从个人提效到企业级稳定产出', description: '回顾如何把个人效率尝试沉淀为可复核、可维护、可接管的企业 AI 运行系统。' },
   '18-附录B-常用指标与评测方法.md': { title: '附录 B：常用指标与评测方法', description: '参考企业 AI 质量、效率、成本、风险与运行稳定性的常用指标、口径和评测方法。' },
   '19-附录C-工具与平台参考.md': { title: '附录 C：工具与平台参考', description: '以动态事实治理视角查看 AI 工具、平台与连接器的参考信息及选型边界。' },
-  '21-附录E-关于作者与进一步交流.md': { title: '附录 E：关于作者与进一步交流', description: '了解《企业 AI 稳定产出手册》的作者、开源协作方式与进一步交流入口。' },
+  '21-附录E-关于作者与进一步交流.md': { title: '附录 E：关于作者与进一步交流', description: '了解《企业 AI 落地实战手册》的作者、开源协作方式与进一步交流入口。' },
   '22-附录F-术语表.md': { title: '附录 F：术语表', description: '查询企业 AI 稳定产出、Skill、Agent、上下文、评测、治理与韧性相关术语。' },
   'evidence/README.md': { title: '试点运行证据包', description: '查看企业 AI 试点如何记录范围、输入、评测、复核、偏差与后续决策的证据包结构。' },
   'evidence/UC-CS-001_客户咨询回复试点证据包.md': { title: '客户咨询回复：试点运行证据包', description: '查看客户咨询回复用例的试点范围、评测方法、运行证据与使用边界。' },

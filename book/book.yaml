@@ -3,7 +3,7 @@
 # 新增文件不会自动进入书，必须在此显式加入。
 # build.sh 读取本文件，按顺序执行 Pandoc → Typst → PDF。
 
-title: 企业 AI 稳定产出手册
+title: 企业 AI 落地实战手册
 version: v2.0.0
 author: Jace
 year: "2026"
@@ -16,7 +16,7 @@ frontmatter:
   - src: 01-开篇-企业AI战略与业务对齐.md
     out: 00-opening.typ
 
-# 正文：按 Part 分组
+# 正文：按 Part 分组（与 README.md 及在线站点 6 分部结构保持一致）
 parts:
   - number: I
     title: 认知与诊断
@@ -30,32 +30,37 @@ parts:
         out: chapter-03.typ
 
   - number: II
-    title: 从单次生成到可复现工作流
-    subtitle: 把个人技巧变成团队可重复的工作方法
+    title: 方法与基础
+    subtitle: 从单次生成到可复现工作流与上下文底座
     chapters:
       - src: 04-第4章-从单次生成到可复现工作流.md
         out: chapter-04.typ
       - src: 05-第5章-数据与知识：稳定产出的地基.md
         out: chapter-05.typ
-      - src: 06-第6章-场景落地：最小闭环设计.md
-        out: chapter-06.typ
 
   - number: III
-    title: 规模化与组织落地
-    subtitle: 从单一闭环到受控用例组合
+    title: 执行与落地
+    subtitle: 从最小闭环、员工日常协作到多场景扩展
     chapters:
+      - src: 06-第6章-场景落地：最小闭环设计.md
+        out: chapter-06.typ
       - src: 07-第7章-员工工作方法：人机协作的日常实践.md
         out: chapter-07.typ
       - src: 08-第8章-从1到N：多场景扩展与优先级管理.md
         out: chapter-08.typ
+
+  - number: IV
+    title: 进阶决策
+    subtitle: Agent 受控编排与专项能力适用判断
+    chapters:
       - src: 09-第9章-Agent与自动化：决策框架与治理要点.md
         out: chapter-09.typ
       - src: 10-第10章-能力专题：RAG、微调与多模态的适用判断.md
         out: chapter-10.typ
 
-  - number: IV
-    title: 价值、治理与韧性
-    subtitle: 用证据决策，用治理保障，用韧性应对变化
+  - number: V
+    title: 度量与治理
+    subtitle: 用证据决策，用组织协同、韧性与合规保障运行
     chapters:
       - src: 11-第11章-价值评估与评测体系：如何算清AI的账.md
         out: chapter-11.typ
@@ -68,9 +73,9 @@ parts:
       - src: 15-第15章-安全与合规.md
         out: chapter-15.typ
 
-  - number: V
-    title: 实践案例
-    subtitle: 从案例中学习控制，而非制造效果幻觉
+  - number: VI
+    title: 案例与收束
+    subtitle: 从公开案例与教学情景中学习控制，而非制造效果幻觉
     chapters:
       - src: 16-第16章-完整案例集.md
         out: chapter-16.typ
