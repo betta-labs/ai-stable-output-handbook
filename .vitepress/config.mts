@@ -207,7 +207,16 @@ export default defineConfig({
   base: BASE,
   cleanUrls: true,
   lastUpdated: true,
-  srcExclude: ['README.md', 'LICENSE', '.github/**', 'node_modules/**'],
+  srcExclude: [
+    'README.md',
+    'LICENSE',
+    '.github/**',
+    '.handbook/**',
+    '.workbuddy/**',
+    '.pnpm-store/**',
+    'book/**',
+    'node_modules/**',
+  ],
   rewrites: pageRoutes,
   ignoreDeadLinks: [(url: string) => {
     let normalized = url.replace(/^\.?\//, '').split(/[?#]/)[0].replace(/\/$/, '')
